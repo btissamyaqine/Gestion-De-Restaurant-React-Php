@@ -1,6 +1,10 @@
 <?php include_once '../config/connection.php';?>
+<?php include("./includes/header.php"); ?>
+
+
 <?php
 if(isset($_POST['update'])){
+	$id_client = $_POST['id_client'];
 	$full_name = $_POST['full_name'];
 	$class = $_POST['class'];
   // !="Class"?$_POST['class']:"";
@@ -15,19 +19,17 @@ if(isset($_POST['update'])){
 	$home_adress = $_POST['home_adress'];
 	$remarque = $_POST['remarque'];
 
+  $query = "UPDATE `client` SET `full_name`=?, `class`=?, `group`=? ,`gender`=?, `tele`=?, `email`=?, `facebook`=?, `date_naissance`=?, `business_adress`=?, `home_adress`=?, `remarque`=? WHERE `id_client`=?";
+  $query = $db->prepare($query);
+  $query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque,$id_client]);
 
-  $query = 'INSERT INTO `client` (`full_name`, `class`, `group`, `gender`, `tele`, `email`, `facebook`, `date_naissance`, `business_adress`, `home_adress`,`remarque`) 
-	VALUES (?,?,?,?,?,?,?,?,?,?,?)';
-    $query = $db->prepare($query);
-    $query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque]);
     // $msg=" Votre Employe a bien été modifier! Merci d'avoir utilisé notre Application.";
     // header("location:client_list.php?msg=".$msg."");
     echo "<script>window.location.href='client_list.php';</script>";
-    exit;
+    // exit;
 
 }
 ?>	
-<?php include("./includes/header.php"); ?>
 
  <?php
 $sql = 'SELECT * FROM `client` WHERE `id_client` like "'.$_GET['id'].'"';
@@ -39,6 +41,7 @@ $result = $db->query($sql);
               <h1>client update</h1>
             </header>
             <form method="post" action="client_update.php">
+              <input type="hidden" name="id_client" value="'.$row["id_client"].'" />
               <div class="row gtr-uniform">
                   <div class="col-3 col-12-xsmall">
                         <input type="text" name="full_name" value="'.$row["full_name"].'" placeholder="Full Name" required  />
@@ -91,11 +94,11 @@ $result = $db->query($sql);
                         <input type="text" name="business_adress" placeholder="Business Address" value="'.$row["business_adress"].'" />
                       </div>
                       <div class="col-6 col-12-xsmall">
-                        <input type="email" name="home_adress" placeholder="Home Address" value="'.$row["home_adress"].'" />
+                        <input type="text" name="home_adress" placeholder="Home Address" value="'.$row["home_adress"].'" />
                       </div>
                     
                       <div class="col-12 col-12-xsmall">
-                        <textarea id="w3review" name="remarque" rows="4" cols="50" placeholder="Remarque" value="'.$row["remarque"].'" ></textarea>
+                        <textarea id="w3review" name="remarque" rows="4" cols="50" placeholder="Remarque" >'.$row["remarque"].'</textarea>
                       </div>
                       <ul class="actions">
                         <li><input type="submit" name="update" value="Update" class="special" /></li>

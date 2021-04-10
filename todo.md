@@ -1,52 +1,38 @@
 # Todo
+## Login
 - [x] Login page - FrontEnd
 - [x] Login page - BackEnd
 - [x] Menu
 - [x] New Client - FrontEnd
 
-- [ ] Integration DataTables in all Tables
-
-
-- login back front
-
-- new client
-- list client
-- detail client
-- update
-- delete
 ############################################
--issue
-  - update inputs
+## Client Management
+  - [x] New client
+  - [x] list client
+  - [x] Detail client
+  - [x] Update client
+  - [x] Delete client
+############################################
+## Todo
   - msg errors
-  - delete: 
-  - 
-  +client_update: 
-  update date naissance
-  update group et class 
-
-  +client_update: 
-  update date naissance not show
-  update group et class not show -> is done
-  return the new index always when we update a client
-############################################
-- New Client
-  - Inputs
-    - Full Name (required) + Group + Class + + gendre 
-    adress (pro) + address (domicile)
-    tele + email + facebook + date de naiss + 
-    remarque
-    credit (red + yellow + green) ???
-
-- Client Management
-  - Read + Update + Delete (validation)
-
 
 ############################################
-- ingridint like myfitnesspal
+## Credit Management
+  - Add
+  - List
+  - Delete
+  - Update
+  - Colors
+  - Calc
+
+############################################
+## Ingredient Management
+ingridint like myfitnesspal
   - name
 
 
 ############################################
+## Menu Management
 - New Menu
   - Inputs
     - name + prix + 
@@ -55,6 +41,7 @@
 
 
 ############################################
+## Order Management
 - New Order
   - each order have a unique ID + and Day ID
   - clients
@@ -72,23 +59,10 @@
 
 
 ############################################
-Comptes
+## Comptes
 - Admin
 - user
   - client
   - order
 
 ############################################
-
-
-
-
-
-- Stock
-  - 
-
-- Hosting
-  - 
-
-
-order_new.php order_list.php client_add.php client_list.php menu_list.php ingredient_list.php

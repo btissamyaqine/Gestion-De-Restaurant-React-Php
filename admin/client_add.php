@@ -86,7 +86,7 @@ if(isset($_POST['append'])){
 				<input type="text" name="business_adress" placeholder="Business Address" />
 			</div>
 			<div class="col-6 col-12-xsmall">
-				<input type="email" name="home_adress" placeholder="Home Address" />
+				<input type="text" name="home_adress" placeholder="Home Address" />
 			</div>
 		
 			<div class="col-12 col-12-xsmall">

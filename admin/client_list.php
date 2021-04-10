@@ -27,17 +27,19 @@ include("../config/connection.php");
 					</thead>
 					<tbody>
 						<?php
-							$credit = 0;
-							$credit == 0 ? $credit_color = "green" : $credit_color = "button";
+							$credit = -2; // exe
+
+							$credit < 0 ? $credit_color = "button" : $credit_color = "green";
 
 							$sql = "SELECT * FROM `client` ORDER BY `id_client` DESC";
 							$result = $db->query($sql);
 							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
 								echo "
 									<tr>
 										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["full_name"]."</a></center></td>
 										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."/".$row["group"]."</a></center></td>
-										<td><center><a href='#' class=".$credit_color.">O Dhs</a></center></td>
+										<td><center><a href='#' class=".$credit_color.">".$credit." Dhs</a></center></td>
 									</tr>
 										";
 							}

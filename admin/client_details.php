@@ -63,18 +63,18 @@ $result = $db->query($sql);
                     <input type="text" name="facebook" placeholder="Facebook" value="'.$row["facebook"].'" disabled/>
                   </div>
                   <div class="col-3 col-12-xsmall">
-                    <input type="date" name="date_naissance" value="'.$row["date_naissance"].'" disabled/>
+                    <input type="text" name="date_naissance" value="'.$row["date_naissance"].'" disabled/>
                   </div>
 
                   <div class="col-6 col-12-xsmall">
                     <input type="text" name="business_adress" placeholder="Business Address" value="'.$row["business_adress"].'" disabled/>
                   </div>
                   <div class="col-6 col-12-xsmall">
-                    <input type="email" name="home_adress" placeholder="Home Address" value="'.$row["home_adress"].'" disabled/>
+                    <input type="text" name="home_adress" placeholder="Home Address" value="'.$row["home_adress"].'" disabled/>
                   </div>
                 
                   <div class="col-12 col-12-xsmall">
-                    <textarea id="w3review" name="remarque" rows="4" cols="50" placeholder="Remarque" value="'.$row["remarque"].'" disabled></textarea>
+                    <textarea id="w3review" name="remarque" rows="4" cols="50" placeholder="Remarque" disabled>'.$row["remarque"].'</textarea>
                   </div>
               </div>
           </form>
