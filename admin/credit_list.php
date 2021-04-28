@@ -11,7 +11,7 @@ include("../config/connection.php");
 
 <section>
 	<header class="main">
-		<h1>Clients</h1>
+		<h1>Credit</h1>
 	</header>
 	<div class="row gtr-200">
 		<div class="col-12 col-12-medium">
@@ -22,8 +22,8 @@ include("../config/connection.php");
 					<thead>
 						<tr>
 							<th>Full Name</th>
-							<th>Class/Group</th>
 							<th>Credit</th>
+							<th>Manage</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -38,9 +38,9 @@ include("../config/connection.php");
 
 								echo "
 									<tr>
-										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["full_name"]."</a></center></td>
-										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."/".$row["group"]."</a></center></td>
+										<td><center><a >".$row["full_name"]."</a></center></td>
 										<td><center><a href='#' class=".$credit_color.">".$credit." Dhs</a></center></td>
+										<td><center><a href='credit_details.php?id=".$row["id_client"]."' class='button primary'>More</a></center></td>
 									</tr>
 										";
 							}

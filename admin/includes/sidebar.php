@@ -22,6 +22,7 @@
 										<li><a href="order_list.php">Orders</a></li>
 										<li><a href="client_add.php">New Client</a></li>
 										<li><a href="client_list.php">Clients</a></li>
+										<li><a href="credit_list.php">Credits</a></li>
 										<li><a href="menu_list.php">Menu</a></li>
 										<li><a href="ingredient_list.php">Ingredients</a></li>
 										<li><a href="../signout.php">Sign Out</a></li>
@@ -57,12 +58,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
+			<!-- <script src="assets/js/jquery.min.js"></script> -->
+			
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<!-- Data Tables -->
-			<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 	</body>
 </html>
