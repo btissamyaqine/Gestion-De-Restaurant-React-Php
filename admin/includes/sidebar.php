@@ -24,6 +24,8 @@
 										<li><a href="client_list">Clients</a></li>
 										<li><a href="menu_list.php">Menu</a></li>
 										<li><a href="ingredient_list.php">Ingredients</a></li>
+										<li><a href="../signout.php">Sign Out</a></li>
+
 									</ul>
 								</nav>
 

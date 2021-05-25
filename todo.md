@@ -1,4 +1,17 @@
 # Todo
+- login back front
+
+- new client
+- list client
+- detail client
+- update
+- delete
+
+
+
+
+
+
 
 ############################################
 - New Client

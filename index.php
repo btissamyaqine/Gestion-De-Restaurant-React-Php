@@ -1,6 +1,33 @@
 <?php
-	if(isset($_POST["signin"])) {
-		echo "hi";
+session_start();
+include_once 'config/connection.php';
+
+if(isset($_POST["signin"])) {
+    if(empty($_POST["login"]) || empty($_POST["password"])) {
+        $message = 'All fields are required.';
+					
+    }
+    else {        
+        $query = 'SELECT * FROM user WHERE login="'.$_POST['login'].'" AND password="'.$_POST['password'].'"';
+        $query = $db->prepare($query);
+        $query->execute();
+        $count = $query->rowCount();
+        $la_case = $query->fetchAll(\PDO::FETCH_ASSOC);
+
+        if ($count > 0) {
+					if ($la_case[0]['active'] == 0) {
+            $_SESSION['id_user']=$la_case[0]['id_user'];
+            $_SESSION['login']=$la_case[0]['login'];
+            $_SESSION['fname']=$la_case[0]['fname'];
+            $_SESSION['lname']=$la_case[0]['lname'];
+            $_SESSION['role']=$la_case[0]['role'];
+						header("location:admin/home.php");
+
+					}
+				}else {
+            $message = 'Incorrect Login or Password.';
+      }
+    }
 	}
 ?>
 
@@ -22,9 +49,9 @@
 
 		<!-- Signup Form -->
 			<form id="signup-form" method="POST" action="index.php">
-				<input type="text" name="username" placeholder="username" />
+				<input type="text" name="login" placeholder="username" />
 				<input type="password" name="password" placeholder="password" />
-				<input type="submit" name="signin" value="Sign In">
+				<input type="submit" name="signin" value="Sign In"/>
 			</form>
 
 		<!-- Footer -->
