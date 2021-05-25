@@ -17,11 +17,11 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.php">Home</a></li>
+										<li><a href="home.php">Home</a></li>
 										<li><a href="order_new.php">New Order</a></li>
 										<li><a href="order_list.php">Orders</a></li>
 										<li><a href="client_add.php">New Client</a></li>
-										<li><a href="client_list">Clients</a></li>
+										<li><a href="client_list.php">Clients</a></li>
 										<li><a href="menu_list.php">Menu</a></li>
 										<li><a href="ingredient_list.php">Ingredients</a></li>
 										<li><a href="../signout.php">Sign Out</a></li>

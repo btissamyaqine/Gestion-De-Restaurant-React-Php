@@ -4,11 +4,10 @@ include_once 'config/connection.php';
 
 if(isset($_POST["signin"])) {
     if(empty($_POST["login"]) || empty($_POST["password"])) {
-        $message = 'All fields are required.';
-					
+        $msg = 'All fields are required !';	
     }
     else {        
-        $query = 'SELECT * FROM user WHERE login="'.$_POST['login'].'" AND password="'.$_POST['password'].'"';
+        $query = 'SELECT * FROM `user` WHERE `login`="'.$_POST['login'].'" AND `password`="'.$_POST['password'].'"';
         $query = $db->prepare($query);
         $query->execute();
         $count = $query->rowCount();
@@ -25,7 +24,7 @@ if(isset($_POST["signin"])) {
 
 					}
 				}else {
-            $message = 'Incorrect Login or Password.';
+            $msg = 'Incorrect Login or Password !';
       }
     }
 	}
@@ -45,7 +44,12 @@ if(isset($_POST["signin"])) {
 			<header id="header">
 				<h1>NoaApp</h1>
 				<p>Welcome to NoaApp restaurant.</p>
+				
 			</header>
+			<p style="color:red;"><?php
+					if(isset($msg)) echo $msg;
+				?></p>
+
 
 		<!-- Signup Form -->
 			<form id="signup-form" method="POST" action="index.php">

@@ -1,3 +1,8 @@
+<?php
+	include("session.php");
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
