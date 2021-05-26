@@ -1,55 +1,50 @@
-<?php include("./includes/header.php"); 
-include_once '../config/connection.php';
-?>
-
-							
-	<div class="table-wrapper">
-		<table class="alt">
-		<thead>
-			<tr>
-				<th>full name</th>
-				<th>class</th>
-				<th>group</th>
-				<th> gender</th>
-				<th>Telephone</th>
-				<th>email</th>
-				<th>facebook</th>
-				<th>date_naissance</th>
-				<th> Business Address</th>
-				<th>home Address</th>
-				<th>Remarque</th>
-			</tr>
-		</thead>
-		<tbody>
 <?php 
-$sql = "SELECT * FROM `client` ORDER BY `id_client` DESC";
-$result = $db->query($sql);
-	while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-				echo "<tr>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["full_name"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["group"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["gender"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["tele"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["email"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["facebook"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["date_naissance"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["business_adress"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["home_adress"]."</a></center></td>
-								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["remarque"]."</a></center></td>
-
-
-							</tr>";
-			}
-$db = null;
+include("./includes/header.php"); 
+include("../config/connection.php");
 ?>
-			</tbody>
-		</table>
+<!-- Data Tables init Script -->
+<!-- <script>
+	$(document).ready( function () {
+    $('#table_id').DataTable();
+	} );
+</script> -->
+
+<section>
+	<header class="main">
+		<h1>Clients</h1>
+	</header>
+	<div class="row gtr-200">
+		<div class="col-12 col-12-medium">
+			<div class="table-wrapper">
+				<table class="alt">
+				<!-- <table id="table_id" class="display"> -->
+					<thead>
+						<tr>
+							<th>Full Name</th>
+							<th>Class</th>
+							<th>Group</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php 
+							$sql = "SELECT * FROM `client` ORDER BY `id_client` DESC";
+							$result = $db->query($sql);
+							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+								echo "
+									<tr>
+										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["full_name"]."</a></center></td>
+										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."</a></center></td>
+										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["group"]."</a></center></td>
+									</tr>
+										";
+							}
+							$db = null;
+						?>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
-
-
-
-
-
+</section>
 <!-- Sidebar -->
 <?php include("./includes/sidebar.php"); ?>

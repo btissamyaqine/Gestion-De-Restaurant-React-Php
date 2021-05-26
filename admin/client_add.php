@@ -3,10 +3,9 @@ include_once '../config/connection.php';
 
 
 if(isset($_POST['append'])){
-
 	$full_name = $_POST['full_name'];
-	$class = $_POST['class'];
-	$group = $_POST['group'];
+	$class = $_POST['class']!="Class"?$_POST['class']:"";
+	$group = $_POST['group']!="Group"?$_POST['group']:"";
 	$gender = $_POST['gender'];
 	$tele = $_POST['tele'];
 	$email = $_POST['email'];
@@ -18,11 +17,12 @@ if(isset($_POST['append'])){
 	$query = 'INSERT INTO `client` (`full_name`, `class`, `group`, `gender`, `tele`, `email`, `facebook`, `date_naissance`, `business_adress`, `home_adress`,`remarque`) 
 	VALUES (?,?,?,?,?,?,?,?,?,?,?)';
     $query = $db->prepare($query);
-    $query->execute([$full_name, $class, $group, $gender, $tele, 
-		$email, $facebook, $date_naissance, $business_adress, $home_adress, 
-		$remarque]);
+    $query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque]);
     $msg=" Votre Employe a bien été enregistré ! Merci d'avoir utilisé notre Application.";
-    header("location:client_list.php?msg=".$msg."");
+    // header("location: ./client_list.php?msg=".$msg."");
+
+		echo "<script>window.location.href='client_list.php';</script>";
+    exit;
 }
 
 ?>
@@ -31,11 +31,11 @@ if(isset($_POST['append'])){
 	<header class="main">
 		<h1>New Client</h1>
 	</header>
-	<form method="post" action="#">
+	<form method="post" action="client_add.php">
 
 		<div class="row gtr-uniform">
 			<div class="col-3 col-12-xsmall">
-				<input type="text" name="full_name" placeholder="Full Name" />
+				<input type="text" name="full_name" placeholder="Full Name" required />
 			</div>
 			<div class="col-3 col-12-xsmall">
 				<select name="class" id="demo-group">
@@ -93,9 +93,11 @@ if(isset($_POST['append'])){
 			</div>
 
 			<div class="col-12">
-					<ul class="actions">
-							<li><input type="submit" name="append" value="append" class="primary" /></li>
-					</ul>
+					<!-- <ul class="actions"> -->
+							<!-- <li> -->
+							<input type="submit" name="append" value="append" class="primary" />
+							<!-- </li> -->
+					<!-- </ul> -->
 			</div>
 		</div>
 	</form>

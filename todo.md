@@ -4,6 +4,7 @@
 - [x] Menu
 - [x] New Client - FrontEnd
 
+- [ ] Integration DataTables in all Tables
 
 
 - login back front
