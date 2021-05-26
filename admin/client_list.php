@@ -1,28 +1,53 @@
-<?php include("./includes/header.php"); ?>
+<?php include("./includes/header.php"); 
+include_once '../config/connection.php';
+?>
 
-							<!-- Home Section -->
-								<section id="banner">
-									<div class="content">
-										<header>
-											<h1>Hi, I’m home</h1>
-											<p>deference menu for you</p>
-										</header>
-										<p>The oldest independent restaurant in Casablanca. 
-											Appreciated for our famous De blabla spaghetti sauces and our delicious inverted pizza. 
-											Homemade and tasty Italian dishes, seafood, steaks and pasta.
-											 Full pub-style menu and selection of sandwiches. Full menu available all day 
-											until late at night. Ideally located on blabla Avenue.</p>
-										<ul class="actions">
-											<li><a href="#" class="button big">Learn More</a></li>
-										</ul>
-									</div>
-									<span class="image object">
-										<img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="" />
-									</span>
-								</section>
+							
+	<div class="table-wrapper">
+		<table class="alt">
+		<thead>
+			<tr>
+				<th>full name</th>
+				<th>class</th>
+				<th>group</th>
+				<th> gender</th>
+				<th>Telephone</th>
+				<th>email</th>
+				<th>facebook</th>
+				<th>date_naissance</th>
+				<th> Business Address</th>
+				<th>home Address</th>
+				<th>Remarque</th>
+			</tr>
+		</thead>
+		<tbody>
+<?php 
+$sql = "SELECT * FROM `client` ORDER BY `id_client` DESC";
+$result = $db->query($sql);
+	while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+				echo "<tr>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["full_name"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["group"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["gender"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["tele"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["email"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["facebook"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["date_naissance"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["business_adress"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["home_adress"]."</a></center></td>
+								<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["remarque"]."</a></center></td>
 
-							<!-- Line in end of Section -->
-								<section> </section>
+
+							</tr>";
+			}
+$db = null;
+?>
+			</tbody>
+		</table>
+	</div>
+
+
 
 
 

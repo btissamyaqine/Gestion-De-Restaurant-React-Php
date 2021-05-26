@@ -1,15 +1,15 @@
 <?php
-    // $DB_DSN = 'mysql:dbname=noa_app;host=127.0.0.1';
-    // $DB_USER = 'root';
-    // $DB_PASSWORD = '';
-    // $DB_NAME = 'noa_app';
-    // $DB_HOST = '127.0.0.1';
+    $DB_DSN = 'mysql:dbname=noa_app;host=127.0.0.1';
+    $DB_USER = 'root';
+    $DB_PASSWORD = '';
+    $DB_NAME = 'noa_app';
+    $DB_HOST = '127.0.0.1';
 
-    $DB_DSN = 'mysql:dbname=mynoama_db;host=localhost:3306';
-    $DB_USER = 'mynoama_user';
-    $DB_PASSWORD = 'NiggainParis96';
-    $DB_NAME = 'mynoama_db';
-    $DB_HOST = 'localhost:3306';
+    // $DB_DSN = 'mysql:dbname=mynoama_db;host=localhost:3306';
+    // $DB_USER = 'mynoama_user';
+    // $DB_PASSWORD = 'NiggainParis96';
+    // $DB_NAME = 'mynoama_db';
+    // $DB_HOST = 'localhost:3306';
 
     $host = $_SERVER['HTTP_HOST'];
     $protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http';
