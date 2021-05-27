@@ -1,1 +1,113 @@
-Hi to Client Details ...  in progress
+<?php
+include_once '../config/connection.php';
+
+
+
+if(isset($_POST['append'])){
+
+	$full_name = $_POST['full_name'];
+	$class = $_POST['class']!="Class"?$_POST['class']:"";
+	$group = $_POST['group']!="Group"?$_POST['group']:"";
+	$gender = $_POST['gender'];
+	$tele = $_POST['tele'];
+	$email = $_POST['email'];
+	$facebook = $_POST['facebook'];
+	$date_naissance = $_POST['date_naissance'];
+	$business_adress = $_POST['business_adress'];
+	$home_adress = $_POST['home_adress'];
+	$remarque = $_POST['remarque'];
+
+  $query = 'INSERT INTO `client` (`full_name`, `class`, `group`, `gender`, `tele`, `email`, `facebook`, `date_naissance`, `business_adress`, `home_adress`,`remarque`) 
+	VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+    $query = $db->prepare($query);
+    $query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque]);
+    //$msg=" Votre Employe a bien été enregistré ! Merci d'avoir utilisé notre Application.";
+   // header("location:emp_list.php?msg=".$msg."");
+   echo "<script>window.location.href='client_list.php';</script>";
+    exit;
+}
+?>
+
+
+<?php 
+include("./includes/header.php"); 
+$sql = "SELECT * FROM `client` WHERE `id_client` like ".$_GET['id']."";
+$result = $db->query($sql);
+ while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        echo '
+        <section>
+          <header class="main">
+            <h1>Client details</h1>
+          </header>
+          <form method="post" action="client_add.php">
+            <div class="row gtr-uniform">
+                  <div class="col-3 col-12-xsmall">
+                    <input type="text" name="full_name" value="'.$row["full_name"].'" placeholder="Full Name" required disabled />
+                  </div>
+                  <div class="col-3 col-12-xsmall">
+                    <select name="class" id="demo-group" value="'.$row["class"].'" disabled>
+                      <option selected></option>
+                      <option value="PS">PS</option>
+                      <option value="MS">MS</option>
+                      <option value="GS">GS</option>
+                      <option value="CP">CP</option>
+                      <option value="CE1">CE1</option>
+                      <option value="CE2">CE2</option>
+                      <option value="CM1">CM1</option>
+                      <option value="CM2">CM2</option>
+                      <option value="CE6">CE6</option>
+                    </select>
+                  </div>
+                  <div class="col-3 col-12-xsmall">
+                    <select name="group" id="demo-group" value="'.$row["group"].'" disabled>
+                      <option selected></option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                    </select>
+                  </div>
+
+                  <div class="col-3 col-12-xsmall">
+                    <select name="gender" id="demo-group" value="'.$row["gender"].'" disabled>
+                      <option selected>Gender</option>
+                      <option value="masculine">masculine</option>
+                      <option value="feminine">Feminine</option>
+                    </select>
+                  </div>
+
+                  <div class="col-3 col-12-xsmall">
+                    <input type="text" name="tele" placeholder="Tele" value="'.$row["tele"].'" disabled/>
+                  </div>
+                  <div class="col-3 col-12-xsmall">
+                    <input type="email" name="email" placeholder="Email" value="'.$row["email"].'" disabled/>
+                  </div>
+                  <div class="col-3 col-12-xsmall">
+                    <input type="text" name="facebook" placeholder="Facebook" value="'.$row["facebook"].'" disabled/>
+                  </div>
+                  <div class="col-3 col-12-xsmall">
+                    <input type="date" name="date_naissance" placeholder="Date naiss" value="'.$row["date_naissance"].'" disabled/>
+                  </div>
+
+                  <div class="col-6 col-12-xsmall">
+                    <input type="text" name="business_adress" placeholder="Business Address" value="'.$row["business_adress"].'" disabled/>
+                  </div>
+                  <div class="col-6 col-12-xsmall">
+                    <input type="email" name="home_adress" placeholder="Home Address" value="'.$row["home_adress"].'" disabled/>
+                  </div>
+                
+                  <div class="col-12 col-12-xsmall">
+                    <textarea id="w3review" name="remarque" rows="4" cols="50" placeholder="Remarque" value="'.$row["remarque"].'" disabled></textarea>
+                  </div>
+              </div>
+          </form>
+
+         </section>';}
+         ?>
+         <ul class="actions">
+            <li><a href="client_update.php?id=<?= $_GET['id'] ?>" type="submit" name="update" value="Update" class="button primary">Update</a></li>
+            <li><a href="client_delete.php?id=<?= $_GET['id']?>" type="reset" name="delete" value="delete"class="button">Delete</a></li>
+          </ul>
+	
+
+
+<?php include("./includes/sidebar.php"); ?>

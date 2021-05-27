@@ -26,7 +26,6 @@ if(isset($_POST['append'])){
 }
 
 ?>
-
 <section>
 	<header class="main">
 		<h1>New Client</h1>
