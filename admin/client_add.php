@@ -92,11 +92,7 @@ if(isset($_POST['append'])){
 			</div>
 
 			<div class="col-12">
-					<!-- <ul class="actions"> -->
-							<!-- <li> -->
-							<input type="submit" name="append" value="append" class="primary" />
-							<!-- </li> -->
-					<!-- </ul> -->
+				<input type="submit" name="append" value="append" class="primary" />
 			</div>
 		</div>
 	</form>

@@ -45,36 +45,14 @@ $result = $db->query($sql);
                     <input type="text" name="full_name" value="'.$row["full_name"].'" placeholder="Full Name" required disabled />
                   </div>
                   <div class="col-3 col-12-xsmall">
-                    <select name="class" id="demo-group" value="'.$row["class"].'" disabled>
-                      <option selected></option>
-                      <option value="PS">PS</option>
-                      <option value="MS">MS</option>
-                      <option value="GS">GS</option>
-                      <option value="CP">CP</option>
-                      <option value="CE1">CE1</option>
-                      <option value="CE2">CE2</option>
-                      <option value="CM1">CM1</option>
-                      <option value="CM2">CM2</option>
-                      <option value="CE6">CE6</option>
-                    </select>
+                    <input type="text" name="class" id="demo-group" value="'.$row["class"].'" disabled />
                   </div>
                   <div class="col-3 col-12-xsmall">
-                    <select name="group" id="demo-group" value="'.$row["group"].'" disabled>
-                      <option selected></option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                    </select>
+                    <input type="text" name="group" id="demo-group" value="'.$row["group"].'" disabled />
                   </div>
-
                   <div class="col-3 col-12-xsmall">
-                    <select name="gender" id="demo-group" value="'.$row["gender"].'" disabled>
-                      <option selected>Gender</option>
-                      <option value="masculine">masculine</option>
-                      <option value="feminine">Feminine</option>
-                    </select>
+                    <input type="text" name="gender" id="demo-group" value="'.$row["gender"].'" disabled />
                   </div>
-
                   <div class="col-3 col-12-xsmall">
                     <input type="text" name="tele" placeholder="Tele" value="'.$row["tele"].'" disabled/>
                   </div>
@@ -85,7 +63,7 @@ $result = $db->query($sql);
                     <input type="text" name="facebook" placeholder="Facebook" value="'.$row["facebook"].'" disabled/>
                   </div>
                   <div class="col-3 col-12-xsmall">
-                    <input type="date" name="date_naissance" placeholder="Date naiss" value="'.$row["date_naissance"].'" disabled/>
+                    <input type="date" name="date_naissance" value="'.$row["date_naissance"].'" disabled/>
                   </div>
 
                   <div class="col-6 col-12-xsmall">
@@ -102,12 +80,22 @@ $result = $db->query($sql);
           </form>
 
          </section>';}
+        
          ?>
-         <ul class="actions">
+          <ul class="actions">
             <li><a href="client_update.php?id=<?= $_GET['id'] ?>" type="submit" name="update" value="Update" class="button primary">Update</a></li>
-            <li><a href="client_delete.php?id=<?= $_GET['id']?>" type="reset" name="delete" value="delete"class="button">Delete</a></li>
+            <li><a href="client_delete.php?id=<?= $_GET['id']?>" type="reset" onclick="return myConfirm();" name="delete" value="delete" class="button">Delete</a></li>
           </ul>
 	
-
+<script>
+function myConfirm() {
+  var result = confirm("Want to delete?");
+  if (result==true) {
+   return true;
+  } else {
+   return false;
+  }
+}
+</script>
 
 <?php include("./includes/sidebar.php"); ?>

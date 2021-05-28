@@ -4,7 +4,7 @@
 <?php
 		if(isset($_GET['id'])) {
 			$id_client = $_GET['id'];
-			$sql = 'DELETE FROM `client` WHERE `id_client` = "'.$id_emp.'"';
+			$sql = 'DELETE FROM `client` WHERE `id_client` = "'.$id_client.'"';
 			$sql = $db->prepare($sql);
 			if ($sql->execute()) {
 				$msg=" Votre Employe a bien été supprimer! Merci d'avoir utilisé notre Application.";

@@ -23,6 +23,7 @@ include("../config/connection.php");
 							<th>Full Name</th>
 							<th>Class</th>
 							<th>Group</th>
+							<th>Credit</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,6 +36,7 @@ include("../config/connection.php");
 										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["full_name"]."</a></center></td>
 										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."</a></center></td>
 										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["group"]."</a></center></td>
+										<td><center><a href='#' class='button small disabled'>O</a></center></td>
 									</tr>
 										";
 							}

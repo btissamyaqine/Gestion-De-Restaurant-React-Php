@@ -2,8 +2,10 @@
 <?php
 if(isset($_POST['update'])){
 	$full_name = $_POST['full_name'];
-	$class = $_POST['class']!="Class"?$_POST['class']:"";
-	$group = $_POST['group']!="Group"?$_POST['group']:"";
+	$class = $_POST['class'];
+  // !="Class"?$_POST['class']:"";
+	$group = $_POST['group'];
+  // !="Group"?$_POST['group']:"";
 	$gender = $_POST['gender'];
 	$tele = $_POST['tele'];
 	$email = $_POST['email'];
@@ -18,10 +20,10 @@ if(isset($_POST['update'])){
 	VALUES (?,?,?,?,?,?,?,?,?,?,?)';
     $query = $db->prepare($query);
     $query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque]);
-    // $msg=" Votre Employe a bien été modifier! Merci d'avoir utilisé notre Application.";
-    // header("location:emp_list.php?msg=".$msg."");
-    echo "<script>window.location.href='client_list.php';</script>";
-    exit;
+    $msg=" Votre Employe a bien été modifier! Merci d'avoir utilisé notre Application.";
+    header("location:client_list.php?msg=".$msg."");
+    // echo "<script>window.location.href='client_list.php';</script>";
+    // exit;
 
 }
 ?>	
@@ -36,14 +38,14 @@ $result = $db->query($sql);
             <header class="main">
               <h1>client update</h1>
             </header>
-            <form method="post" action="client_details.php">
+            <form method="post" action="client_update.php">
               <div class="row gtr-uniform">
                   <div class="col-3 col-12-xsmall">
                         <input type="text" name="full_name" value="'.$row["full_name"].'" placeholder="Full Name" required  />
                       </div>
                       <div class="col-3 col-12-xsmall">
                         <select name="class" id="demo-group" value="'.$row["class"].'" >
-                          <option selected></option>
+                          <option selected>Class</option>
                           <option value="PS">PS</option>
                           <option value="MS">MS</option>
                           <option value="GS">GS</option>
@@ -57,7 +59,7 @@ $result = $db->query($sql);
                       </div>
                       <div class="col-3 col-12-xsmall">
                         <select name="group" id="demo-group" value="'.$row["group"].'" >
-                          <option selected></option>
+                          <option selected>Group</option>
                           <option value="A">A</option>
                           <option value="B">B</option>
                           <option value="C">C</option>

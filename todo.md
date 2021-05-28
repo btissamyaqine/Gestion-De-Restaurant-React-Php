@@ -14,6 +14,12 @@
 - detail client
 - update
 - delete
+############################################
+-issue
+  +client_update: 
+  update date naissance
+  update group et class 
+  
 
 
 
