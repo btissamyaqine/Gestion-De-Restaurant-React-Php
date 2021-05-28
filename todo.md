@@ -17,16 +17,9 @@
 ############################################
 -issue
   +client_update: 
-  update date naissance
-  update group et class 
-  
-
-
-
-
-
-
-
+  update date naissance not show
+  update group et class not show -> is done
+  return the new index always when we update a client
 ############################################
 - New Client
   - Inputs

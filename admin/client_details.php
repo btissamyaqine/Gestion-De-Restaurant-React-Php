@@ -17,8 +17,8 @@ if(isset($_POST['append'])){
 	$home_adress = $_POST['home_adress'];
 	$remarque = $_POST['remarque'];
 
-  $query = 'INSERT INTO `client` (`full_name`, `class`, `group`, `gender`, `tele`, `email`, `facebook`, `date_naissance`, `business_adress`, `home_adress`,`remarque`) 
-	VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+  $query = 'INSERT INTO `client`(`full_name`, `class`, `group`, `gender`, `tele`, `email`, `facebook`, `date_naissance`, `business_adress`, `home_adress`, `remarque`) 
+  VALUES (?,?,?,?,?,?,?,?,?,?,?)';
     $query = $db->prepare($query);
     $query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque]);
     //$msg=" Votre Employe a bien été enregistré ! Merci d'avoir utilisé notre Application.";

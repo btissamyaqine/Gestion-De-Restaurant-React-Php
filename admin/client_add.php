@@ -22,6 +22,8 @@ if(isset($_POST['append'])){
     // header("location: ./client_list.php?msg=".$msg."");
 
 		echo "<script>window.location.href='client_list.php';</script>";
+		
+	//echo "<script type='text/javascript'>alert(' Successfully'); </script>";
     exit;
 }
 
@@ -92,14 +94,17 @@ if(isset($_POST['append'])){
 			</div>
 
 			<div class="col-12">
-				<input type="submit" name="append" value="append" class="primary" />
+				<input type="submit" name="append" onclick="return message();" value="append" class="primary" />
 			</div>
 		</div>
 	</form>
 </section>
 
-<!-- Line in end of Section -->
-<section> </section>
+<script>
+function message() {
+  alert("your client added succefly");
+}
+</script>
 
 
 

@@ -20,10 +20,10 @@ if(isset($_POST['update'])){
 	VALUES (?,?,?,?,?,?,?,?,?,?,?)';
     $query = $db->prepare($query);
     $query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque]);
-    $msg=" Votre Employe a bien été modifier! Merci d'avoir utilisé notre Application.";
-    header("location:client_list.php?msg=".$msg."");
-    // echo "<script>window.location.href='client_list.php';</script>";
-    // exit;
+    // $msg=" Votre Employe a bien été modifier! Merci d'avoir utilisé notre Application.";
+    // header("location:client_list.php?msg=".$msg."");
+    echo "<script>window.location.href='client_list.php';</script>";
+    exit;
 
 }
 ?>	
@@ -84,7 +84,7 @@ $result = $db->query($sql);
                         <input type="text" name="facebook" placeholder="Facebook" value="'.$row["facebook"].'" />
                       </div>
                       <div class="col-3 col-12-xsmall">
-                        <input type="date" name="date_naissance" placeholder="Date naiss" value="'.$row["date_naissance"].'" />
+                        <input type="date" name="date_naissance" value="'.$row["date_naissance"].'" />
                       </div>
 
                       <div class="col-6 col-12-xsmall">
