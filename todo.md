@@ -16,6 +16,14 @@
 - delete
 ############################################
 -issue
+  - update inputs
+  - msg errors
+  - delete: 
+  - 
+  +client_update: 
+  update date naissance
+  update group et class 
+
   +client_update: 
   update date naissance not show
   update group et class not show -> is done

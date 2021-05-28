@@ -21,22 +21,23 @@ include("../config/connection.php");
 					<thead>
 						<tr>
 							<th>Full Name</th>
-							<th>Class</th>
-							<th>Group</th>
+							<th>Class/Group</th>
 							<th>Credit</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php 
+						<?php
+							$credit = 0;
+							$credit == 0 ? $credit_color = "green" : $credit_color = "button";
+
 							$sql = "SELECT * FROM `client` ORDER BY `id_client` DESC";
 							$result = $db->query($sql);
 							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 								echo "
 									<tr>
 										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["full_name"]."</a></center></td>
-										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."</a></center></td>
-										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["group"]."</a></center></td>
-										<td><center><a href='#' class='button small disabled'>O</a></center></td>
+										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."/".$row["group"]."</a></center></td>
+										<td><center><a href='#' class=".$credit_color.">O Dhs</a></center></td>
 									</tr>
 										";
 							}
