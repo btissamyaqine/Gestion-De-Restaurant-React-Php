@@ -28,19 +28,20 @@ include("../config/connection.php");
 					</thead>
 					<tbody>
 						<?php
-							$credit = -2; // exe
+							
 
-							$credit < 0 ? $credit_color = "button" : $credit_color = "green";
-
-							$sql = "SELECT * FROM `client` ORDER BY `id_client` DESC";
+							$sql = "SELECT `full_name`, SUM(credit) AS Credit FROM `credit` GROUP BY `full_name` ORDER BY `create_at` DESC";
 							$result = $db->query($sql);
+							
+							$credit = $row["Credit"]; 
+							$credit < 0 ? $credit_color = "button" : $credit_color = "green";
 							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
 								echo "
 									<tr>
 										<td><center><a >".$row["full_name"]."</a></center></td>
 										<td><center><a href='#' class=".$credit_color.">".$credit." Dhs</a></center></td>
-										<td><center><a href='credit_details.php?id=".$row["id_client"]."' class='button primary'>More</a></center></td>
+										<td><center><a href='credit_details.php?id_client=".$row["id_client"]."&full_name=".$row["full_name"]."' class='button primary'>More</a></center></td>
 									</tr>
 										";
 							}
