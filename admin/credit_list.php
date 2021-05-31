@@ -17,8 +17,7 @@ include("../config/connection.php");
 		<div class="col-12 col-12-medium">
 			<div class="table-wrapper">
 				<!-- <table class="alt"> -->
-				<!-- <table id="table_id" class="display"> -->
-				<table id="table_id" class="alt">
+				<table id="table_id" class="display">
 					<thead>
 						<tr>
 							<th>Full Name</th>
@@ -28,22 +27,29 @@ include("../config/connection.php");
 					</thead>
 					<tbody>
 						<?php
-							
 
-							$sql = "SELECT `full_name`, SUM(credit) AS Credit FROM `credit` GROUP BY `full_name` ORDER BY `create_at` DESC";
-							$result = $db->query($sql);
-							
-							$credit = $row["Credit"]; 
-							$credit < 0 ? $credit_color = "button" : $credit_color = "green";
-							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+$query = "SELECT `client`.`id_client`, `client`.`full_name`, `credit`.`id_client`, SUM(`credit`) as total_credit
+	FROM `client`, `credit`
+	WHERE `client`.`id_client` = `credit`.`id_client`
+	GROUP BY `client`.`full_name`";
+$query = $db->query($query);
+$query->execute();
+$count = $query->rowCount();
+$row = $query->fetchAll(PDO::FETCH_ASSOC);
+$i = 0;
+
+while($i < $count) {
+	$credit = $row[$i]["total_credit"]; 
+	$credit < 0 ? $credit_color = "button" : $credit_color = "green";
 
 								echo "
 									<tr>
-										<td><center><a >".$row["full_name"]."</a></center></td>
+										<td><center><a >".$row[$i]["full_name"]."</a></center></td>
 										<td><center><a href='#' class=".$credit_color.">".$credit." Dhs</a></center></td>
-										<td><center><a href='credit_details.php?id_client=".$row["id_client"]."&full_name=".$row["full_name"]."' class='button primary'>More</a></center></td>
+										<td><center><a href='credit_details.php?id_client=".$row[$i]["id_client"]."&full_name=".$row[$i]["full_name"]."' class='button primary'>More</a></center></td>
 									</tr>
 										";
+								$i++;
 							}
 							$db = null;
 						?>

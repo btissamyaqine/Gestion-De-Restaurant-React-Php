@@ -28,23 +28,30 @@ include("../config/connection.php");
 					</thead>
 					<tbody>
 						<?php
-							$credit = -2; // exe
+							
+$query = "SELECT `client`.`id_client`, `client`.`full_name`, `client`.`class`, `client`.`group`, `credit`.`id_client`, SUM(`credit`) as total_credit
+	FROM `client`, `credit`
+	WHERE `client`.`id_client` = `credit`.`id_client`
+	GROUP BY `client`.`full_name`";
+$query = $db->query($query);
+$query->execute();
+$count = $query->rowCount();
+$row = $query->fetchAll(PDO::FETCH_ASSOC);
+$i = 0;
 
-							$credit < 0 ? $credit_color = "button" : $credit_color = "green";
-
-							$sql = "SELECT * FROM `client` ORDER BY `id_client` DESC";
-							$result = $db->query($sql);
-							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
-								echo "
-									<tr>
-										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["full_name"]."</a></center></td>
-										<td><center><a href='client_details.php?id=".$row["id_client"]."'>".$row["class"]."/".$row["group"]."</a></center></td>
-										<td><center><a href='#' class=".$credit_color.">".$credit." Dhs</a></center></td>
-									</tr>
-										";
-							}
-							$db = null;
+while($i < $count) {
+	$credit = $row[$i]["total_credit"]; 
+	$credit < 0 ? $credit_color = "button" : $credit_color = "green";
+	echo "
+		<tr>
+			<td><center><a href='client_details.php?id=".$row[$i]["id_client"]."'>".$row[$i]["full_name"]."</a></center></td>
+			<td><center><a href='client_details.php?id=".$row[$i]["id_client"]."'>".$row[$i]["class"]."/".$row[$i]["group"]."</a></center></td>
+			<td><center><a href='#' class=".$credit_color.">".$credit." Dhs</a></center></td>
+		</tr>
+			";
+	$i++;
+}
+							
 						?>
 					</tbody>
 				</table>
