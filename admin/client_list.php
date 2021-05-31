@@ -27,7 +27,7 @@ include("../config/connection.php");
 					</thead>
 					<tbody>
 						<?php
-							$credit = -2; // exe
+							$credit = 0; // exe
 
 							$credit < 0 ? $credit_color = "button" : $credit_color = "green";
 
