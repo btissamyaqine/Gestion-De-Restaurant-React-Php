@@ -1,23 +1,46 @@
-<?php include("./includes/header.php"); ?>
+<?php include("./includes/header.php"); 
+include("../config/connection.php");
+?>
+		
 
-							<!-- Home Section -->
+	<section>
+		<ul class="actions">
+				<li><a href="ingredient_add.php" class="button primary">Add Ingredient</a></li>
+			
+			</ul>
+			<br>
+			<div class="table-wrapper">
+						<table>
+							<thead>
+								<tr>
+									<th>Name</th>
+									<!-- <th>Ingrediants</th> -->
+									<th>Create at</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php
+							$sql = "SELECT * FROM `ingredient`";
+							$result = $db->query($sql);
+							$result->execute();
+							while($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
 
+								echo "
+									<tr>
+										<td>".$row["name_ing"]."</td>
+										<td>".$row["create_at"]."</td>
+									</tr>
+										";
+							}
+							$db = null;
+						?>
+								
+							</tbody>
+						</table>
+				</div>
 
-							<!-- Line in end of Section -->
-	<section> 
-			<form method="post" action="menu_add.php">
-					<div class="row gtr-uniform">
-						<div class="col-3 col-12-xsmall">
-							<input type="text" name="name_menu" placeholder="Menu Name"/>
-						</div>
-						<div class="col-3 col-12-xsmall">
-							<input type="text" name="prix_menu" placeholder="Price" />
-						</div>
-						<div class="col-12">
-							<input type="submit" name="submit" value="submit" class="primary" />
-					</div>
-				</form>
-	</section>
+	<!-- Line in end of Section -->
+</section>
 
 
 
