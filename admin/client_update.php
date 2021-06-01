@@ -6,10 +6,10 @@
 if(isset($_POST['update'])){
 	$id_client = $_POST['id_client'];
 	$full_name = $_POST['full_name'];
-	$class = $_POST['class'];
-  // !="Class"?$_POST['class']:"";
-	$group = $_POST['group'];
-  // !="Group"?$_POST['group']:"";
+	// $class = $_POST['class'];
+  !="Class"?$_POST['class']:"";
+	// $group = $_POST['group'];
+  !="Group"?$_POST['group']:"";
 	$gender = $_POST['gender'];
 	$tele = $_POST['tele'];
 	$email = $_POST['email'];
