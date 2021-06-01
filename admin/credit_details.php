@@ -11,21 +11,17 @@ include("../config/connection.php");
 
 <section>
 	<header class="main">
-		<?php echo "<h1>".$_GET["full_name"]." Credit</h1>";
-
-		$id_client = $_GET['id_client'];
-		$full_name = $_GET['full_name'];
-
+		<?php echo "<h1>".$_GET["full_name"]."'s Credits</h1>";
+			$id_client = $_GET['id_client'];
+			$full_name = $_GET['full_name'];
 		?>
-		
 		<a href="credit_add.php?id_client=<?= $id_client ?>&full_name=<?= $full_name ?>" type="submit" class="button primary">Add Credit</a>
-
 	</header>
+
 	<div class="row gtr-200">
 		<div class="col-12 col-12-medium">
 			<div class="table-wrapper">
 				<table class="alt">
-				<!-- <table id="table_id" class="alt"> -->
 					<thead>
 						<tr>
 							<th>Date</th>
@@ -34,20 +30,24 @@ include("../config/connection.php");
 					</thead>
 					<tbody>
 						<?php
-							$credit = -2; // exe
-
-							$credit < 0 ? $credit_color = "button" : $credit_color = "green";
 				
-							$sql = "SELECT * FROM `credit` WHERE `id_client` like ".$id_client." ORDER BY `id_client` DESC";
-							$result = $db->query($sql);
-							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+							$query = "SELECT * FROM `credit` WHERE `id_client` like ".$id_client." ORDER BY `create_at` DESC";
+							$query = $db->query($query);
+							$query->execute();
+							$count = $query->rowCount();
+							$row = $query->fetchAll(PDO::FETCH_ASSOC);
+							$i = 0;
 
+							while($i < $count) {
+								$credit = $row[$i]["credit"]; 
+								$credit < 0 ? $credit_color = "button" : $credit_color = "green";
 								echo "
 									<tr>
-										<td><center><a>".$row["create_at"]."</a></center></td>
-										<td><center><a class=".$credit_color.">".$row["credit"]." Dhs</a></center></td>
+										<td><center><a>".$row[$i]["create_at"]."</a></center></td>
+										<td><center><a class=".$credit_color.">".$row[$i]["credit"]." Dhs</a></center></td>
 									</tr>
 										";
+									$i++;
 							}
 							$db = null;
 						?>

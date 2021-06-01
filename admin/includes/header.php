@@ -13,8 +13,10 @@
 		<!-- Data Tables -->
 
 		<script src="assets/js/jquery-3.6.0.min.js"></script>
-		<!-- <link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.min.css"/> -->
+		<link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.css"/>
+		<!-- <link rel="stylesheet" type="text/css" href="assets/DataTables/css/dataTables.bootstrap4.min.css"/> -->
 		<script type="text/javascript" src="assets/DataTables/datatables.min.js"></script>
+		<!-- <script type="text/javascript" src="assets/DataTables/js/dataTables.bootstrap4.min.js"></script> -->
 
 	</head>
 	<body class="is-preload">

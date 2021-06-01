@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 12:46 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.32
+-- Host: localhost:3306
+-- Generation Time: May 31, 2021 at 03:46 PM
+-- Server version: 10.3.28-MariaDB-cll-lve
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -98,15 +99,7 @@ INSERT INTO `credit` (`id_credit`, `id_client`, `full_name`, `class`, `group`, `
 (16, 16, 'Nouamane Ajana', 'CE2', 'A', 'Gender', 698738346, '', '', '0000-00-00 00:00:00', '', '', '', 0, '2021-05-31 12:27:28'),
 (17, 17, 'hahahhas', 'Class', 'Group', 'Gender', 2147483647, 'jgfut@hjgiuyg.com', 'hahh', '0000-00-00 00:00:00', 'gbhnttgbgfbgfbgf', 'fvrghtngfb@jdvcjhdv', '', 0, '2021-05-31 12:27:28'),
 (25, 19, 'aSASAS', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', 0, '2021-05-31 13:32:35'),
-(26, 19, 'aSASAS', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', 12, '2021-05-31 13:43:13'),
-(27, 19, 'aSASAS', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', 1254, '2021-05-31 21:59:51'),
-(28, 19, 'aSASAS', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', -9999, '2021-05-31 22:01:11'),
-(29, 0, 'issam', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', -10, '2021-05-31 22:33:07'),
-(30, 0, 'issam', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', 15, '2021-05-31 22:33:17'),
-(31, 3, 'btissamyaqine', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', 15, '2021-05-31 22:35:51'),
-(32, 3, 'btissamyaqine', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', -20, '2021-05-31 22:36:05'),
-(33, 19, 'aSASAS', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', 15, '2021-05-31 22:37:50'),
-(34, 3, 'btissamyaqine', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', 15, '2021-05-31 22:38:06');
+(26, 0, 'aSASAS', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', 12, '2021-05-31 13:43:13');
 
 -- --------------------------------------------------------
 
@@ -168,7 +161,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `credit`
 --
 ALTER TABLE `credit`
-  MODIFY `id_credit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_credit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user`

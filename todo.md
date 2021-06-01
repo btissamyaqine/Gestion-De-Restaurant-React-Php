@@ -14,16 +14,17 @@
   - [x] Delete client
 ############################################
 ## Todo
+  - [x] DataTables
   - msg errors
 
 ############################################
 ## Credit Management
-  - Add
-  - List
+  - [x] Add done
+  - [x] List
   - Delete
   - Update
-  - Colors
-  - Calc
+  - [x] Colors
+  - [x] Calc
 
 ############################################
 ## Ingredient Management
