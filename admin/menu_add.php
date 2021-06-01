@@ -4,6 +4,7 @@ if(isset($_POST['submit'])){
 	//print_r($_POST);
 	$name_menu = $_POST['name_menu'];
 	$prix_menu = $_POST['prix_menu'];
+	$ingredient = $_POST['name_ing']
 	$query = 'INSERT INTO `menu`(`name_menu`, `prix_menu`) 
   VALUES (?,?)';
     $query = $db->prepare($query);

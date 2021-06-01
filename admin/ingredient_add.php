@@ -2,12 +2,11 @@
 include_once '../config/connection.php';
 if(isset($_POST['submit'])){
 	//print_r($_POST);
-	$name_menu = $_POST['name_ing'];
+	$name_ing = $_POST['name_ing'];
   $create_at = $_POST['create_at'];
-	$query = 'INSERT INTO `ingredient`(`name_ing`, `create_at`) 
-  VALUES (?,?)';
+	$query = 'INSERT INTO `ingredient`(`name_ing`, `create_at`) VALUES (?,?)';
     $query = $db->prepare($query);
-    $query->execute([$name_menu, $prix_menu]);
+    $query->execute([$name_ing, $create_at]);
     $msg=" Votre Ingredient a bien été enregistré ! Merci d'avoir utilisé notre Application.";
 		echo "<script>window.location.href='ingredient_list.php';</script>";
 }

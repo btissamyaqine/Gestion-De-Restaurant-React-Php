@@ -20,15 +20,15 @@ include("../config/connection.php");
 							</thead>
 							<tbody>
 							<?php
-							$sql = "SELECT * FROM `ingredient`";
+							$sql = "SELECT * FROM `ingredient` ORDER BY `id_ingrediant` DESC";
 							$result = $db->query($sql);
 							$result->execute();
-							while($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
+							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
 								echo "
 									<tr>
-										<td>".$row["name_ing"]."</td>
-										<td>".$row["create_at"]."</td>
+										<td>".$row['name_ing']."</td>
+										<td>".$row['create_at']."</td>
 									</tr>
 										";
 							}

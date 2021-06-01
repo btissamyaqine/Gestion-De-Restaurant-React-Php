@@ -14,20 +14,24 @@ include("../config/connection.php");
 							<thead>
 								<tr>
 									<th>Name</th>
-									<!-- <th>Ingrediants</th> -->
+									<th>ingredient</th>
 									<th>Price</th>
 								</tr>
 							</thead>
 							<tbody>
 							<?php
-							$sql = "SELECT * FROM `menu` ORDER BY `id_menu` DESC";
+							$sql = "SELECT name_menu,prix_menu , name_ing FROM menu, ingredient";
+
+
 							$result = $db->query($sql);
+							$result->execute();
 							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
 								echo "
 									<tr>
-										<td>".$row["name_menu"]."</td>
-										<td>".$row["prix_menu"]."</td>
+										<td>".$row['name_menu']."</td>
+										<td>".$row['name_ing']."</td>
+										<td>".$row['prix_menu']."</td>
 									</tr>
 										";
 							}
