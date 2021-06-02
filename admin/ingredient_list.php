@@ -17,7 +17,7 @@ include("../config/connection.php");
 	<div class="row gtr-200">
 		<div class="col-12 col-12-medium">
 			<div class="table-wrapper">
-				<table class="alt">
+				<table id="table_id" class="alt">
 					<thead>
 						<tr>
 							<th>Ingredient Name</th>
@@ -33,8 +33,6 @@ include("../config/connection.php");
 							$row = $query->fetchAll(PDO::FETCH_ASSOC);
 							$i = 0;
 							while($i < $count) {
-								$credit = $row[$i]["credit"]; 
-								$credit < 0 ? $credit_color = "button" : $credit_color = "green";
 								echo "
 									<tr>
 										<td><center>".$row[$i]["name_ing"]."</center></td>

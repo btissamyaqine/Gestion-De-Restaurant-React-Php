@@ -1,51 +1,55 @@
-<?php include("./includes/header.php"); 
+<?php 
+include("./includes/header.php"); 
 include("../config/connection.php");
 ?>
-		
+<!-- Data Tables init Script -->
+<script>
+	$(document).ready( function () {
+    $('#table_id').DataTable();
+	} );
+</script>
 
-	<section>
-		<ul class="actions">
-				<li><a href="menu_add.php" class="button primary">Add menu</a></li>
-			
-			</ul>
-			<br>
+<section>
+	<header class="main">
+		<h1>Menus</h1>
+		<a href="menu_add.php" type="submit" class="button primary">Add New Menu</a>
+	</header>
+	<div class="row gtr-200">
+		<div class="col-12 col-12-medium">
 			<div class="table-wrapper">
-						<table>
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>ingredient</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-							<?php
-							$sql = "SELECT name_menu,prix_menu , name_ing FROM menu, ingredient";
-
-
-							$result = $db->query($sql);
-							$result->execute();
-							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
+				<table id="table_id" class="display">
+					<thead>
+						<tr>
+							<th>Menu Name</th>
+							<th>Price</th>
+							<th>Ing Test</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							$query = "SELECT * FROM `menu`";
+							$query = $db->query($query);
+							$query->execute();
+							$count = $query->rowCount();
+							$row = $query->fetchAll(PDO::FETCH_ASSOC);
+							$i = 0;
+							while($i < $count) {
 								echo "
 									<tr>
-										<td>".$row['name_menu']."</td>
-										<td>".$row['name_ing']."</td>
-										<td>".$row['prix_menu']."</td>
+										<td><center>".$row[$i]["menu_name"]."</center></td>
+										<td><center>".$row[$i]["menu_price"]."</center></td>
+										<td><center>".$row[$i]["ingredients"]."</center></td>
 									</tr>
 										";
+									$i++;
 							}
-							$db = null;
 						?>
-								
-							</tbody>
-						</table>
-				</div>
-
-	<!-- Line in end of Section -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </section>
-
-
-
 <!-- Sidebar -->
 <?php include("./includes/sidebar.php"); ?>
+

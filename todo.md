@@ -1,9 +1,10 @@
 # Todo
-
 ## Template
 - [x] Header
 - [x] Container (Body)
 - [x] Sidebar (Menu + Footer)
+- [x] DataTables
+- [ ] msg errors
 
 ## Login
 - [x] Sign In
@@ -13,40 +14,28 @@
 - [x] New client
 - [x] list client
 - [x] Detail client
-- [ ] Update client
+- [x] Update client
 - [x] Delete client
 - Issues
   - [ ] Tele: not show 0
 
-############################################
-## Todo
-  - [x] DataTables
-  - msg errors
-
-############################################
 ## Credit Management
-  - [x] Add done
-  - [x] List
-  - Delete
-  - Update
-  - [x] Colors
-  - [x] Calc
+- [x] Add done
+- [x] List
+- [ ] Delete
+- [ ] Update
+- [x] Colors
+- [x] Calc
 
-############################################
 ## Ingredient Management
-- [ ] Ingredient Add: Issue
+- [x] Ingredient Add: Issue
 - [x] Ingredient List
 
-############################################
 ## Menu Management
-- New Menu
-  - Inputs
-    - name + prix + 
+- [x] Menu List
+- [x] Add New Menu
+- [ ] Menu Details
 
-- Menu Management
-
-
-############################################
 ## Order Management
 - New Order
   - each order have a unique ID + and Day ID
@@ -64,19 +53,11 @@
   - Read + Update + Annuler (keep it in back)
 
 
-############################################
 ## Comptes
 - Admin
 - user
   - client
   - order
 
-############################################
-tacos
-  - 3 ing
-  - 25 MAD
-  - ddd
 
-
-book 10x
 

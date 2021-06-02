@@ -4,7 +4,7 @@ include('../config/connection.php');
 ?>
 
 <?php
-	if(isset($_POST['submit'])){
+	if(isset($_POST['append']) ){
 		$name_ing = $_POST['name_ing'];
 		$query = 'INSERT INTO `ingredient`(`name_ing`) VALUES (?)';
 		$query = $db->prepare($query);
