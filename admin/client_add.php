@@ -17,14 +17,21 @@ if(isset($_POST['append'])){
 	$query = 'INSERT INTO `client` (`full_name`, `class`, `group`, `gender`, `tele`, `email`, `facebook`, `date_naissance`, `business_adress`, `home_adress`,`remarque`) 
 	VALUES (?,?,?,?,?,?,?,?,?,?,?)';
     $query = $db->prepare($query);
-    $query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque]);
-    $msg=" Votre Employe a bien été enregistré ! Merci d'avoir utilisé notre Application.";
-    // header("location: ./client_list.php?msg=".$msg."");
-
-		echo "<script>window.location.href='client_list.php';</script>";
-		
-	//echo "<script type='text/javascript'>alert(' Successfully'); </script>";
-    exit;
+    if ($query->execute([$full_name, $class, $group, $gender, $tele, $email, $facebook, $date_naissance, $business_adress, $home_adress, $remarque])) {
+			echo "
+				<script>
+					const msg = 'Done.';
+					window.location.href='client_list.php?msg='+msg;
+				</script>
+				";
+		} else {
+			echo "
+				<script>
+					const msg = 'Sorry, something went wrong!';
+					window.location.href='client_list.php?msg='+msg;
+				</script>
+				";
+		}
 }
 
 ?>
@@ -94,19 +101,11 @@ if(isset($_POST['append'])){
 			</div>
 
 			<div class="col-12">
-				<input type="submit" name="append" onclick="return message();" value="append" class="primary" />
+				<input type="submit" name="append" value="append" class="primary" />
 			</div>
 		</div>
 	</form>
 </section>
-
-<script>
-function message() {
-  alert("your client added succefly");
-}
-</script>
-
-
 
 <!-- Sidebar -->
 <?php include("./includes/sidebar.php"); ?>

@@ -1,17 +1,23 @@
 # Todo
-## Login
-- [x] Login page - FrontEnd
-- [x] Login page - BackEnd
-- [x] Menu
-- [x] New Client - FrontEnd
 
-############################################
+## Template
+- [x] Header
+- [x] Container (Body)
+- [x] Sidebar (Menu + Footer)
+
+## Login
+- [x] Sign In
+- [x] Sign Out
+
 ## Client Management
-  - [x] New client
-  - [x] list client
-  - [x] Detail client
-  - [x] Update client
-  - [x] Delete client
+- [x] New client
+- [x] list client
+- [x] Detail client
+- [ ] Update client
+- [x] Delete client
+- Issues
+  - [ ] Tele: not show 0
+
 ############################################
 ## Todo
   - [x] DataTables
@@ -28,9 +34,8 @@
 
 ############################################
 ## Ingredient Management
-ingridint like myfitnesspal
-  - name
-
+- [ ] Ingredient Add: Issue
+- [x] Ingredient List
 
 ############################################
 ## Menu Management
@@ -67,3 +72,11 @@ ingridint like myfitnesspal
   - order
 
 ############################################
+tacos
+  - 3 ing
+  - 25 MAD
+  - ddd
+
+
+book 10x
+

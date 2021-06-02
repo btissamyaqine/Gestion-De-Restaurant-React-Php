@@ -35,22 +35,12 @@ include("../config/connection.php");
 					</thead>
 					<tbody>
 						<?php
-<<<<<<< HEAD
-							$credit = 0; // exe
-
-							$credit < 0 ? $credit_color = "button" : $credit_color = "green";
-
-							$sql = "SELECT * FROM `client` ORDER BY `id_client` DESC";
-							$result = $db->query($sql);
-							while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-=======
 $q1 = "SELECT * FROM `client`"; //q1 = query1
 $q1 = $db->query($q1);
 $q1->execute();
 $c1 = $q1->rowCount(); //c1 = count1
 $r1 = $q1->fetchAll(PDO::FETCH_ASSOC); // r1 = row1
 $i = 0;
->>>>>>> 93c3fdb7dbf868625d9e6cd3f38920feb75f2d03
 
 while ($i < $c1) {
 	$q2 = "SELECT `id_client`, SUM(`credit`) as total_credit FROM `credit` WHERE `id_client` = ".$r1[$i]["id_client"]."";

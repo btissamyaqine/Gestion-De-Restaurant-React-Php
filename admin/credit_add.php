@@ -2,17 +2,28 @@
 include_once '../config/connection.php';
 
 
-if(isset($_POST['append'])){
-	print_r($_POST);
+if(isset($_POST['append'])) {
 	$id_client= $_POST["id_client"];
 	$full_name = $_POST['full_name'];
 	$credit = $_POST['credit'];
 	$query = 'INSERT INTO `credit` (`id_client`,`full_name`, `credit`) 
 	VALUES (?,?,?)';
     $query = $db->prepare($query);
-    $query->execute([$id_client, $full_name, $credit]);
-    $msg=" Votre Employe a bien été enregistré ! Merci d'avoir utilisé notre Application.";
-		echo "<script>window.location.href='credit_list.php';</script>";
+		if ($query->execute([$id_client, $full_name, $credit])) {
+			echo "
+				<script>
+					const msg = 'Done.';
+					window.location.href='credit_list.php?msg='+msg;
+				</script>
+				";
+		} else {
+			echo "
+				<script>
+					const msg = 'Sorry, something went wrong!';
+					window.location.href='credit_list.php?msg='+msg;
+				</script>
+				";
+		}
 }
 
 ?>
@@ -33,14 +44,6 @@ if(isset($_POST['append'])){
 		</div>
 	</form>
 </section>
-
-<script>
-function message() {
-  alert("your client added succefly");
-}
-</script>
-
-
 
 <!-- Sidebar -->
 <?php include("./includes/sidebar.php"); ?>

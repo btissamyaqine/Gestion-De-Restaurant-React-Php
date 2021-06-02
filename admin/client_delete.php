@@ -7,19 +7,21 @@
 			$sql = 'DELETE FROM `client` WHERE `id_client` = "'.$id_client.'"';
 			$sql = $db->prepare($sql);
 			if ($sql->execute()) {
-				$msg=" Votre Employe a bien été supprimer! Merci d'avoir utilisé notre Application.";
-				header('location:client_list.php?msg="'.$msg.'"');
+				echo "
+					<script>
+						const msg = 'Done.';
+						window.location.href='client_list.php?msg='+msg;
+					</script>
+					";
 			} else {
-				echo "Emp not existe";
+			echo "Sorry, something went wrong";
 			}
-			
 		} else {
-			$msg = "Please select a valide user";
-			header('location:client_list.php?msg="'.$msg.'"');
+			echo "
+					<script>
+						const msg = 'Sorry, something went wrong!';
+						window.location.href='client_list.php?msg='+msg;
+					</script>
+					";
 		}
-
-
-
-
-
 ?>

@@ -1,35 +1,46 @@
-<?php include("./includes/header.php"); 
-include_once '../config/connection.php';
-if(isset($_POST['submit'])){
-	//print_r($_POST);
-	$name_ing = $_POST['name_ing'];
-  $create_at = $_POST['create_at'];
-	$query = 'INSERT INTO `ingredient`(`name_ing`, `create_at`) VALUES (?,?)';
-    $query = $db->prepare($query);
-    $query->execute([$name_ing, $create_at]);
-    $msg=" Votre Ingredient a bien été enregistré ! Merci d'avoir utilisé notre Application.";
-		echo "<script>window.location.href='ingredient_list.php';</script>";
-}
+<?php 
+include("./includes/header.php"); 
+include('../config/connection.php');
+?>
+
+<?php
+	if(isset($_POST['submit'])){
+		$name_ing = $_POST['name_ing'];
+		$query = 'INSERT INTO `ingredient`(`name_ing`) VALUES (?)';
+		$query = $db->prepare($query);
+		if ($query->execute([$name_ing])) {
+			echo "
+				<script>
+					const msg = 'Done.';
+					window.location.href='ingredient_list.php?msg='+msg;
+				</script>
+				";
+		} else {
+			echo "
+				<script>
+					const msg = 'Sorry, something went wrong!';
+					window.location.href='ingredient_list.php?msg='+msg;
+				</script>
+				";
+		}
+	}
 ?>
 
 <section>
-<form method="post" action="ingredient_add.php">
-
+	<header class="main">
+		<h1>Add New Ingredient</h1>
+	</header>
+	<form method="post" action="ingredient_add.php">
 		<div class="row gtr-uniform">
-			<div class="col-3 col-12-xsmall">
-				<input type="text" name="name_ing" placeholder="Ingredient Name"/>
+			<div class="col-6 col-12-xsmall">
+				<input type="text" name="name_ing" placeholder="Ingredient Name" required />
 			</div>
-      <div class="col-3 col-12-xsmall">
-				<input type="date" name="create_at" placeholder="Create at" />
+			<div class="col-6 col-12-xsmall">
+				<input type="submit" name="append" value="append" class="button primary fit" />
 			</div>
-      <div class="col-12">
-				<input type="submit" name="submit" value="Submit" class="primary" />
-			</div>
+		</div>
 	</form>
-
 </section>
 
-
-
-
+<!-- Sidebar -->
 <?php include("./includes/sidebar.php"); ?>
