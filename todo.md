@@ -22,8 +22,8 @@
 ## Credit Management
 - [x] Add done
 - [x] List
-- [ ] Delete
-- [ ] Update
+- [x] Delete
+- [x] Update
 - [x] Colors
 - [x] Calc
 
@@ -34,7 +34,6 @@
 ## Menu Management
 - [x] Menu List
 - [x] Add New Menu
-- [ ] Menu Details
 
 ## Order Management
 - New Order
@@ -59,5 +58,6 @@
   - client
   - order
 
-
+## Devis
+- [ ] Create a devis
 

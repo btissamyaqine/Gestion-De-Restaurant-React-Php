@@ -20,7 +20,7 @@ if(isset($_POST["signin"])) {
             $_SESSION['fname']=$la_case[0]['fname'];
             $_SESSION['lname']=$la_case[0]['lname'];
             $_SESSION['role']=$la_case[0]['role'];
-						header("location:admin/home.php");
+						header("location:admin/client_list.php");
 
 					}
 				}else {

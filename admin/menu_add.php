@@ -10,12 +10,16 @@ include("../config/connection.php");
 		foreach($ingredient as $ing) {  
 			$ingredients .= $ing." - ";  
 		}
-		
+		$ingredients = trim($ingredients);
+		$ingredients = substr_replace($ingredients ,"", -1);
+
 		$menu_name = $_POST['menu_name'];
 		$menu_price = $_POST['menu_price'];
 
 		$query = 'INSERT INTO `menu`(`menu_name`, `menu_price`, `ingredients`) VALUES (?,?,?)';
 		$query = $db->prepare($query);
+		// print_r($query);
+
 		if ($query->execute([$menu_name,$menu_price,$ingredients])) {
 			echo "
 				<script>

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 02, 2021 at 08:52 PM
--- Server version: 10.3.29-MariaDB-cll-lve
--- PHP Version: 7.3.28
+-- Host: 127.0.0.1
+-- Generation Time: Jun 02, 2021 at 11:58 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -53,11 +52,10 @@ INSERT INTO `client` (`id_client`, `full_name`, `class`, `group`, `gender`, `tel
 (4, 'HSDJHG', 'CE1', 'B', 'masculine', 86975974, 'btissamyaqine123@gmail.com', 'btissamyaqine', '2021-05-26 00:00:00', 'gbhnttgbgfbgfbgf', 'fvrghtngfb@jdvcjhdv', '4FRFC'),
 (7, 'issam', 'PS', 'A', 'masculine', 0, '', '', '0000-00-00 00:00:00', '', '', ''),
 (10, 'btissam', '', '', 'Gender', 6541254, '', '', '0000-00-00 00:00:00', '', '', ''),
-(15, 'hahahha', 'PS', 'B', 'masculine', 2147483647, 'jgfut@hjgiuyg.com', 'hahh', '2021-05-26 00:00:00', 'gbhnttgbgfbgfbgf', 'fvrghtngfb@jdvcjhdv', 'hfdnfdmbvksgf;owibvd'),
+(15, 'hahahha', '', 'C', 'masculine', 2147483647, 'jgfut@hjgiuyg.com', 'hahh', '0000-00-00 00:00:00', 'gbhnttgbgfbgfbgf', 'fvrghtngfb@jdvcjhdv', 'hfdnfdmbvksgf;owibvd'),
 (17, 'hahahhas', 'Class', 'Group', 'Gender', 2147483647, 'jgfut@hjgiuyg.com', 'hahh', '0000-00-00 00:00:00', 'gbhnttgbgfbgfbgf', 'fvrghtngfb@jdvcjhdv', ''),
 (20, 'issm test', '', '', 'Gender', 0, '', '', '0000-00-00 00:00:00', '', '', ''),
-(21, 'issam test 65', '', '', 'Gender', 0, '', '', '0000-00-00 00:00:00', '', '', ''),
-(25, 'dedede', '', '', 'Gender', 654128732, '', '', '0000-00-00 00:00:00', '', '', '');
+(21, 'issam test 65', '', '', 'Gender', 0, '', '', '0000-00-00 00:00:00', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -128,7 +126,33 @@ INSERT INTO `ingredient` (`id_ing`, `name_ing`, `create_at`) VALUES
 (2, 'test 01', '2021-06-02 18:24:56'),
 (3, 'test 01', '2021-06-02 18:24:58'),
 (4, 'test 01', '2021-06-02 18:24:58'),
-(5, '545454', '2021-06-01 23:00:00');
+(5, '545454', '2021-06-01 23:00:00'),
+(6, 'sdsdsd', '2021-06-02 20:01:36'),
+(7, 'test02', '2021-06-02 20:01:42'),
+(8, 'tomat', '2021-06-02 21:38:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL,
+  `menu_name` varchar(255) NOT NULL,
+  `menu_price` float NOT NULL DEFAULT 0,
+  `ingredients` varchar(2550) NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id_menu`, `menu_name`, `menu_price`, `ingredients`, `create_at`) VALUES
+(1, 'test', 120, '545454,sdsdsd,test02,', '2021-06-02 21:33:48'),
+(2, 'test 2 ', 675, 'test - test - test02 - ', '2021-06-02 21:35:54'),
+(3, 'tacos', 35, '545454 - test - tomat - ', '2021-06-02 21:39:39');
 
 -- --------------------------------------------------------
 
@@ -177,6 +201,12 @@ ALTER TABLE `ingredient`
   ADD PRIMARY KEY (`id_ing`);
 
 --
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -202,7 +232,13 @@ ALTER TABLE `credit`
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `id_ing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_ing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

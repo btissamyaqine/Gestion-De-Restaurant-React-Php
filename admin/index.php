@@ -1,7 +1,7 @@
 <?php 
   echo "
     <script>
-      window.location.href='home.php;
+      window.location.href='client_list.php;
     </script>
     ";
 ?>

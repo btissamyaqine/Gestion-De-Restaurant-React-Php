@@ -17,7 +17,7 @@ include("../config/connection.php");
 	<div class="row gtr-200">
 		<div class="col-12 col-12-medium">
 			<div class="table-wrapper">
-				<table id="table_id" class="alt">
+				<table id="table_id" class="display">
 					<thead>
 						<tr>
 							<th>Ingredient Name</th>
