@@ -47,7 +47,7 @@ while ($i < $c1) {
 	echo "
 		<tr>
 			<td><center>".$r1[$i]["full_name"]." - ".$r1[$i]["class"]."/".$r1[$i]["group"]."</center></td>
-			<td><center><a href='order_add_s2.php?id=".$r1[$i]["id_client"]."' class='button'>Add Order</a></center></td>
+			<td><center><a href='order_add_s2.php?id_client=".$r1[$i]["id_client"]."&full_name=".$r1[$i]["full_name"]."&tele=".$r1[$i]["tele"]."&class=".$r1[$i]["class"]."/".$r1[$i]["group"]."' class='button'>Add Order</a></center></td>
 		</tr>
 			";
 	$i++;

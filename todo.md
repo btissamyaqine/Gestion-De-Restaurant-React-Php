@@ -1,14 +1,4 @@
 # Todo
-
-
-please check the new features in below
-- [x] Ingredient Delete
-- [x] Menu Delete
-- [x] Adjust Menu List
-- [x] Adjust Ingredient List
-- [x] Add New Order: UI
-
-
 ## Template
 - [x] Header
 - [x] Container (Body)
@@ -49,7 +39,7 @@ please check the new features in below
 
 ## Order Management
 - [ ] New Order
-  - Client (Full name + Class/Group + Tele) + Menu (Name, Price, Qte) + remise (0%, 25%, 50%, 100%) + remarque + Create_at + Status (???) + Unique ID + Daily ID
+  - Client (Full name + Class/Group + Tele) + Menu (Name, Price, Qte) + remise (0%, 25%, 50%, 100%) + remarque + Create_at + Status (Pending -> Delivered -> Canceled -> Archived) + Unique ID + Daily ID
 
 - [ ] Order List
   - All Orders
@@ -63,6 +53,11 @@ please check the new features in below
     - Ordered -> Pending -> Delivered
     - Canceled
     - Archived
+
+
+
+
+
 
 ## Comptes
 - Admin

@@ -4,7 +4,8 @@ include("../config/connection.php");
 ?>
 
 <?php
-	// if(isset($_POST['append']) ){
+	if(isset($_POST['append']) ){
+		print_r($_POST);
 	// 	$ingredient=$_POST['ingredient'];  
 	// 	$ingredients="";  
 	// 	foreach($ingredient as $ing) {  
@@ -35,7 +36,7 @@ include("../config/connection.php");
 	// 			</script>
 	// 			";
 	// 	}
-	// }
+	}
 ?>
 
 <!-- Data Tables init Script -->
@@ -52,7 +53,20 @@ include("../config/connection.php");
 	<div class="row gtr-200">
 		<div class="col-12 col-12-medium">
 			<div class="table-wrapper">
-				<form method="POST" action="#">
+				<form method="POST" action="order_add_s2.php">
+					<?php
+						// recover Client Data
+						$id_client=$_GET["id_client"];
+						$full_name=$_GET["full_name"];
+						$tele=$_GET["tele"];
+						$class=$_GET["class"];
+					
+					?>
+					<input type="hidden" name="id_client" value="<?= $id_client ?>" />
+					<input type="hidden" name="full_name" value="<?= $full_name ?>" />
+					<input type="hidden" name="tele" value="<?= $tele ?>" />
+					<input type="hidden" name="class" value="<?= $class ?>" />
+					<input type="hidden" name="status" value="Pending" />
 
 					<!-- <table class="alt"> -->
 					<table id="table_id" class="alt">
@@ -76,7 +90,7 @@ include("../config/connection.php");
 											<tr>
 												<td>
 													<center>
-														<input type='checkbox' id=".$row[$i]["id_menu"]." name='ingredient[]' value=".$row[$i]["menu_name"].">
+														<input type='checkbox' id=".$row[$i]["id_menu"]." name='menu[]' value=".$row[$i]["menu_name"].">
 														<label for=".$row[$i]["id_menu"].">".$row[$i]["menu_name"]."</label>
 													</center>
 												</td>
@@ -84,7 +98,7 @@ include("../config/connection.php");
 												<td>
 													<center>
 														<div class='col-3 col-12-xsmall'>
-															<input type='number' name='qte' pattern='[0-9]+(\.[0-9][0-9]?)?' value='0'/>
+															<input type='number' name='qte[]' />
 														</div>
 													</center>
 												</td>
