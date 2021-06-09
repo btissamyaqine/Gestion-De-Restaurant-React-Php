@@ -22,6 +22,7 @@ include("../config/connection.php");
 						<tr>
 							<th>Ingredient Name</th>
 							<th>Create At</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -37,6 +38,7 @@ include("../config/connection.php");
 									<tr>
 										<td><center>".$row[$i]["name_ing"]."</center></td>
 										<td><center>".$row[$i]["create_at"]."</center></td>
+										<td><center><a href='ingredient_delete.php?id=".$row[$i]["id_ing"]."' onClick='return myConfirm();' class='button'>X</a></center></td>
 									</tr>
 										";
 									$i++;
@@ -49,5 +51,17 @@ include("../config/connection.php");
 	</div>
 </section>
 <!-- Sidebar -->
+
+<script>
+function myConfirm() {
+  var result = confirm("Want to delete?");
+  if (result==true) {
+   return true;
+  } else {
+   return false;
+  }
+}
+</script>
+
 <?php include("./includes/sidebar.php"); ?>
 

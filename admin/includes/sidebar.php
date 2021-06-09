@@ -20,7 +20,7 @@
 										<li><a href="client_list.php">Clients</a></li>
 										<li><a href="client_add.php">New Client</a></li>
 										<li><a href="order_list.php">Orders</a></li>
-										<li><a href="order_new.php">New Order</a></li>
+										<li><a href="order_add_s1.php">New Order</a></li>
 										<li><a href="credit_list.php">Credits</a></li>
 										<li><a href="ingredient_list.php">Ingredients</a></li>
 										<li><a href="menu_list.php">Menu</a></li>

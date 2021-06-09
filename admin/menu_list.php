@@ -20,9 +20,9 @@ include("../config/connection.php");
 				<table id="table_id" class="display">
 					<thead>
 						<tr>
-							<th>Menu Name</th>
-							<th>Price</th>
-							<th>Ing Test</th>
+							<th>Menu</th>
+							<th>Ingredients</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -36,9 +36,9 @@ include("../config/connection.php");
 							while($i < $count) {
 								echo "
 									<tr>
-										<td><center>".$row[$i]["menu_name"]."</center></td>
-										<td><center>".$row[$i]["menu_price"]."</center></td>
+										<td><center>".$row[$i]["menu_name"].": ".$row[$i]["menu_price"]." Dhs</center></td>
 										<td><center>".$row[$i]["ingredients"]."</center></td>
+										<td><center><a href='menu_delete.php?id=".$row[$i]["id_menu"]."' onClick='return myConfirm();' class='button'>X</a></center></td>
 									</tr>
 										";
 									$i++;
@@ -51,5 +51,17 @@ include("../config/connection.php");
 	</div>
 </section>
 <!-- Sidebar -->
+
+<script>
+function myConfirm() {
+  var result = confirm("Want to delete?");
+  if (result==true) {
+   return true;
+  } else {
+   return false;
+  }
+}
+</script>
+
 <?php include("./includes/sidebar.php"); ?>
 

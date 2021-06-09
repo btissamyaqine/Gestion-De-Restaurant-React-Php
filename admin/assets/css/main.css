@@ -1018,6 +1018,7 @@ label {
   margin: 0 0 1em 0; }
 
 input[type="text"],
+input[type="number"],
 input[type="password"],
 input[type="date"],
 input[type="email"],
@@ -1037,10 +1038,11 @@ textarea {
   color: inherit;
   display: block;
   outline: 0;
-  padding: 0 1em;
+  padding: 0 1em; /* issam */
   text-decoration: none;
   width: 100%; }
   input[type="text"]:invalid,
+  input[type="number"]:invalid,
   input[type="date"]:invalid,
   input[type="password"]:invalid,
   input[type="email"]:invalid,
@@ -1051,6 +1053,7 @@ textarea {
   textarea:invalid {
     box-shadow: none; }
   input[type="text"]:focus,
+  input[type="number"]:focus,
   input[type="date"]:focus,
   input[type="password"]:focus,
   input[type="email"]:focus,
@@ -1079,6 +1082,7 @@ select {
     display: none; }
 
 input[type="text"],
+input[type="number"],
 input[type="date"],
 input[type="password"],
 input[type="email"],

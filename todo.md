@@ -1,4 +1,14 @@
 # Todo
+
+
+please check the new features in below
+- [x] Ingredient Delete
+- [x] Menu Delete
+- [x] Adjust Menu List
+- [x] Adjust Ingredient List
+- [x] Add New Order: UI
+
+
 ## Template
 - [x] Header
 - [x] Container (Body)
@@ -30,27 +40,29 @@
 ## Ingredient Management
 - [x] Ingredient Add: Issue
 - [x] Ingredient List
+- [x] Ingredient Delete
 
 ## Menu Management
 - [x] Menu List
 - [x] Add New Menu
+- [ ] Menu Delete
 
 ## Order Management
-- New Order
-  - each order have a unique ID + and Day ID
-  - clients
-  - Inputs
-    - Menu List + prix + remise 25% + 50% + 100%
-    - in the ned of the order remque
+- [ ] New Order
+  - Client (Full name + Class/Group + Tele) + Menu (Name, Price, Qte) + remise (0%, 25%, 50%, 100%) + remarque + Create_at + Status (???) + Unique ID + Daily ID
 
+- [ ] Order List
+  - All Orders
 
-  - status -> pending -> done ->
+- [ ] Order Detail
+  -> like facture (client + Menus + remise + remarque + status + IDs) -> Client Detail + Menu Details
 
-- Order Management
-  - remise
-  - Satuts (Active/annuler)
-  - Read + Update + Annuler (keep it in back)
-
+- [ ] Order Update
+  - Change Status 
+    - status ->  -> done ->
+    - Ordered -> Pending -> Delivered
+    - Canceled
+    - Archived
 
 ## Comptes
 - Admin
