@@ -4,15 +4,34 @@ include("../config/connection.php");
 ?>
 
 <?php
-	if(isset($_POST['append']) ){
-		print_r($_POST);
-	// 	$ingredient=$_POST['ingredient'];  
-	// 	$ingredients="";  
-	// 	foreach($ingredient as $ing) {  
-	// 		$ingredients .= $ing." - ";  
-	// 	}
-	// 	$ingredients = trim($ingredients);
-	// 	$ingredients = substr_replace($ingredients ,"", -1);
+	if(isset($_POST['append']) && isset($_POST["menu"])){
+		// print_r($_POST);
+		isset($_POST["id_client"]) ? $id_client = htmlspecialchars($_POST["id_client"]) : "";
+		isset($_POST["full_name"]) ? $full_name = htmlspecialchars($_POST["full_name"]) : "";
+		isset($_POST["tele"]) ? $tele = htmlspecialchars($_POST["tele"]) : "";
+		isset($_POST["class"]) ? $class = htmlspecialchars($_POST["class"]) : "";
+		isset($_POST["status"]) ? $status = htmlspecialchars($_POST["status"]) : "";
+		isset($_POST["remise"]) ? $remise = htmlspecialchars($_POST["remise"]) : "";
+		isset($_POST["remarque"]) ? $remarque = htmlspecialchars($_POST["remarque"]) : "";
+		
+		$menus = $_POST["menu"];
+		$prices = $_POST["price"];
+		$qtes = $_POST["qte"];
+		$order_menus = "";
+		$price_total= 0;
+		foreach( $menus as $i => $menu ) {
+			if(!is_numeric($qtes[$i])) $qtes[$i] = 1;
+
+			$order_menus .= $menu." - ".$prices[$i]."Dhs - Qte:".$qtes[$i].",";
+			$price_total += ($prices[$i] * $qtes[$i]);
+		}
+		$price_remise = $remise * $price_total / 100;
+		$price_final = $price_total - $price_remise;
+
+		// `id_client`, `full_name`, `tele`, `class`, `status`, `remarque`, `remise`, `order_menus`, `price_total`, `price_remise`, `price_final`
+
+
+echo $price_final;
 
 	// 	$menu_name = $_POST['menu_name'];
 	// 	$menu_price = $_POST['menu_price'];
@@ -56,10 +75,10 @@ include("../config/connection.php");
 				<form method="POST" action="order_add_s2.php">
 					<?php
 						// recover Client Data
-						$id_client=$_GET["id_client"];
-						$full_name=$_GET["full_name"];
-						$tele=$_GET["tele"];
-						$class=$_GET["class"];
+						isset($_GET["id_client"]) ? $id_client = htmlspecialchars($_GET["id_client"]) : "";
+						isset($_GET["full_name"]) ? $full_name = htmlspecialchars($_GET["full_name"]) : "";
+						isset($_GET["tele"]) ? $tele = htmlspecialchars($_GET["tele"]) : "";
+						isset($_GET["class"]) ? $id_client = htmlspecialchars($_GET["class"]) : "";
 					
 					?>
 					<input type="hidden" name="id_client" value="<?= $id_client ?>" />
@@ -95,6 +114,7 @@ include("../config/connection.php");
 													</center>
 												</td>
 												<td><center>".$row[$i]["menu_price"]." Dhs</center></td>
+												<input type='hidden' value=".$row[$i]["menu_price"]." name='price[]' />
 												<td>
 													<center>
 														<div class='col-3 col-12-xsmall'>
