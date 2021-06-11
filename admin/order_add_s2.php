@@ -28,17 +28,13 @@ include("../config/connection.php");
 		$price_remise = $remise * $price_total / 100;
 		$price_final = $price_total - $price_remise;
 
-		// `id_client`, `full_name`, `tele`, `class`, `status`, `remarque`, `remise`, `order_menus`, `price_total`, `price_remise`, `price_final`
+		// `id_order`,`id_client`, `full_name`, `tele`, `class`, `status`, `remarque`, `remise`, `order_menus`, `price_total`, `price_remise`, `price_final`
+// create_at, daily_id
 
-
-echo $price_final;
-
-	// 	$menu_name = $_POST['menu_name'];
-	// 	$menu_price = $_POST['menu_price'];
+// echo $order_menus;
 
 	// 	$query = 'INSERT INTO `menu`(`menu_name`, `menu_price`, `ingredients`) VALUES (?,?,?)';
 	// 	$query = $db->prepare($query);
-	// 	// print_r($query);
 
 	// 	if ($query->execute([$menu_name,$menu_price,$ingredients])) {
 	// 		echo "

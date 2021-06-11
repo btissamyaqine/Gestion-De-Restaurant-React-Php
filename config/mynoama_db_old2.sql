@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 03:15 PM
+-- Generation Time: Jun 02, 2021 at 11:58 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -126,6 +126,7 @@ INSERT INTO `ingredient` (`id_ing`, `name_ing`, `create_at`) VALUES
 (2, 'test 01', '2021-06-02 18:24:56'),
 (3, 'test 01', '2021-06-02 18:24:58'),
 (4, 'test 01', '2021-06-02 18:24:58'),
+(5, '545454', '2021-06-01 23:00:00'),
 (6, 'sdsdsd', '2021-06-02 20:01:36'),
 (7, 'test02', '2021-06-02 20:01:42'),
 (8, 'tomat', '2021-06-02 21:38:54');
@@ -149,8 +150,9 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `menu_name`, `menu_price`, `ingredients`, `create_at`) VALUES
-(3, 'tacos', 35, '545454 - test - tomat - ', '2021-06-02 21:39:39'),
-(4, 'qqqqq', 10, '545454 - test ', '2021-06-07 13:24:58');
+(1, 'test', 120, '545454,sdsdsd,test02,', '2021-06-02 21:33:48'),
+(2, 'test 2 ', 675, 'test - test - test02 - ', '2021-06-02 21:35:54'),
+(3, 'tacos', 35, '545454 - test - tomat - ', '2021-06-02 21:39:39');
 
 -- --------------------------------------------------------
 
@@ -230,13 +232,13 @@ ALTER TABLE `credit`
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `id_ing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_ing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
