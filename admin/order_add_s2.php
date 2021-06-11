@@ -11,8 +11,12 @@ include("../config/connection.php");
 		isset($_POST["tele"]) ? $tele = htmlspecialchars($_POST["tele"]) : "";
 		isset($_POST["class"]) ? $class = htmlspecialchars($_POST["class"]) : "";
 		isset($_POST["status"]) ? $status = htmlspecialchars($_POST["status"]) : "";
-		isset($_POST["remise"]) ? $remise = htmlspecialchars($_POST["remise"]) : "";
 		isset($_POST["remarque"]) ? $remarque = htmlspecialchars($_POST["remarque"]) : "";
+		isset($_POST["remise"]) ? $remise = htmlspecialchars($_POST["remise"]) : "";
+		isset($_POST["order_menus"]) ? $remarque = htmlspecialchars($_POST["order_menus"]) : "";
+		
+
+
 		
 		$menus = $_POST["menu"];
 		$prices = $_POST["price"];
@@ -28,33 +32,28 @@ include("../config/connection.php");
 		$price_remise = $remise * $price_total / 100;
 		$price_final = $price_total - $price_remise;
 
-		// `id_client`, `full_name`, `tele`, `class`, `status`, `remarque`, `remise`, `order_menus`, `price_total`, `price_remise`, `price_final`
+		$query = 'INSERT INTO `order`(`id_client`, `full_name`, `tele`,`class`,`status`,`remarque`,`remise`) VALUES (?,?,?,?,?,?,?)';
+			$query = $db->prepare($query);
+			//print_r($query);
 
-
-echo $price_final;
-
-	// 	$menu_name = $_POST['menu_name'];
-	// 	$menu_price = $_POST['menu_price'];
-
-	// 	$query = 'INSERT INTO `menu`(`menu_name`, `menu_price`, `ingredients`) VALUES (?,?,?)';
-	// 	$query = $db->prepare($query);
-	// 	// print_r($query);
-
-	// 	if ($query->execute([$menu_name,$menu_price,$ingredients])) {
-	// 		echo "
-	// 			<script>
-	// 				const msg = 'Done.';
-	// 				window.location.href='menu_list.php?msg='+msg;
-	// 			</script>
-	// 			";
-	// 	} else {
-	// 		echo "
-	// 			<script>
-	// 				const msg = 'Sorry, something went wrong!';
-	// 				window.location.href='menu_list.php?msg='+msg;
-	// 			</script>
-	// 			";
-	// 	}
+		if ($query->execute([$_POST["id_client"], $_POST["full_name"], $_POST["tele"], $_POST["class"],
+		$_POST["status"], $_POST["remarque"], $_POST["remise"]])) {
+			echo "
+				<script>
+					const msg = 'Done.';
+					window.location.href='order_list.php?msg='+msg;
+				</script>
+				hi
+				";
+		} else {
+			echo "
+				<script>
+					const msg = 'Sorry, something went wrong!';
+					window.location.href='order_list.php?msg='+msg;
+				</script>
+				error
+				";
+		}
 	}
 ?>
 
