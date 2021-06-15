@@ -13,10 +13,6 @@ include("../config/connection.php");
 		isset($_POST["status"]) ? $status = htmlspecialchars($_POST["status"]) : "";
 		isset($_POST["remarque"]) ? $remarque = htmlspecialchars($_POST["remarque"]) : "";
 		isset($_POST["remise"]) ? $remise = htmlspecialchars($_POST["remise"]) : "";
-		isset($_POST["order_menus"]) ? $remarque = htmlspecialchars($_POST["order_menus"]) : "";
-		
-
-
 		
 		$menus = $_POST["menu"];
 		$prices = $_POST["price"];
@@ -32,28 +28,37 @@ include("../config/connection.php");
 		$price_remise = $remise * $price_total / 100;
 		$price_final = $price_total - $price_remise;
 
-		$query = 'INSERT INTO `order`(`id_client`, `full_name`, `tele`,`class`,`status`,`remarque`,`remise`) VALUES (?,?,?,?,?,?,?)';
-			$query = $db->prepare($query);
-			//print_r($query);
+echo "ID Client",$_POST["id_client"];
 
-		if ($query->execute([$_POST["id_client"], $_POST["full_name"], $_POST["tele"], $_POST["class"],
-		$_POST["status"], $_POST["remarque"], $_POST["remise"]])) {
+	$query =	'INSERT INTO `order`(`id_client`, `full_name`, `tele`, `class`, `status`, `remarque`, `remise`, `order_menus`, `price_total`,
+						`price_remise`, `price_final`) 
+						VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+		$query = $db->prepare($query);
+
+		// print_r([$id_client, $full_name, $tele, $class, $status, $remarque, $remise, $order_menus, $price_total, $price_remise, $price_final]);
+
+		if ($query->execute([$id_client, $full_name, $tele, $class, $status, $remarque, $remise, $order_menus, $price_total, $price_remise, $price_final])) {
 			echo "
 				<script>
 					const msg = 'Done.';
 					window.location.href='order_list.php?msg='+msg;
 				</script>
-				hi
 				";
 		} else {
 			echo "
 				<script>
 					const msg = 'Sorry, something went wrong!';
-					window.location.href='order_list.php?msg='+msg;
+					window.location.href='order_add_s1.php.php?msg='+msg;
 				</script>
-				error
 				";
 		}
+	} else if(isset($_POST['append'])){
+		echo "
+			<script>
+				const msg = 'Sorry, something went wrong!';
+				window.location.href='order_add_s1.php?msg='+msg;
+			</script>
+			";
 	}
 ?>
 
@@ -77,7 +82,7 @@ include("../config/connection.php");
 						isset($_GET["id_client"]) ? $id_client = htmlspecialchars($_GET["id_client"]) : "";
 						isset($_GET["full_name"]) ? $full_name = htmlspecialchars($_GET["full_name"]) : "";
 						isset($_GET["tele"]) ? $tele = htmlspecialchars($_GET["tele"]) : "";
-						isset($_GET["class"]) ? $id_client = htmlspecialchars($_GET["class"]) : "";
+						isset($_GET["class"]) ? $class = htmlspecialchars($_GET["class"]) : "";
 					
 					?>
 					<input type="hidden" name="id_client" value="<?= $id_client ?>" />

@@ -1,10 +1,9 @@
 <?php include("./includes/header.php"); ?>
 
-							<!-- Home Section -->
+<section>
 
 
-							<!-- Line in end of Section -->
-								<section> </section>
+</section>
 
 
 

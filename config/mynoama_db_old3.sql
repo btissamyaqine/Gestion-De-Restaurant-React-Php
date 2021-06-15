@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Mar 15 Juin 2021 à 17:04
--- Version du serveur :  10.1.21-MariaDB
--- Version de PHP :  5.6.30
+-- Host: 127.0.0.1
+-- Generation Time: Jun 11, 2021 at 03:15 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `mynoama_db`
+-- Database: `mynoama_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `client`
+-- Table structure for table `client`
 --
 
 CREATE TABLE `client` (
@@ -42,7 +43,7 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `client`
+-- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`id_client`, `full_name`, `class`, `group`, `gender`, `tele`, `email`, `facebook`, `date_naissance`, `business_adress`, `home_adress`, `remarque`) VALUES
@@ -59,7 +60,7 @@ INSERT INTO `client` (`id_client`, `full_name`, `class`, `group`, `gender`, `tel
 -- --------------------------------------------------------
 
 --
--- Structure de la table `credit`
+-- Table structure for table `credit`
 --
 
 CREATE TABLE `credit` (
@@ -77,11 +78,11 @@ CREATE TABLE `credit` (
   `home_adress` varchar(320) NOT NULL,
   `remarque` varchar(1000) NOT NULL,
   `credit` int(11) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `credit`
+-- Dumping data for table `credit`
 --
 
 INSERT INTO `credit` (`id_credit`, `id_client`, `full_name`, `class`, `group`, `gender`, `tele`, `email`, `facebook`, `date_naissance`, `business_adress`, `home_adress`, `remarque`, `credit`, `create_at`) VALUES
@@ -107,17 +108,17 @@ INSERT INTO `credit` (`id_credit`, `id_client`, `full_name`, `class`, `group`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ingredient`
+-- Table structure for table `ingredient`
 --
 
 CREATE TABLE `ingredient` (
   `id_ing` int(11) NOT NULL,
   `name_ing` varchar(255) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `ingredient`
+-- Dumping data for table `ingredient`
 --
 
 INSERT INTO `ingredient` (`id_ing`, `name_ing`, `create_at`) VALUES
@@ -125,7 +126,6 @@ INSERT INTO `ingredient` (`id_ing`, `name_ing`, `create_at`) VALUES
 (2, 'test 01', '2021-06-02 18:24:56'),
 (3, 'test 01', '2021-06-02 18:24:58'),
 (4, 'test 01', '2021-06-02 18:24:58'),
-(5, '545454', '2021-06-01 23:00:00'),
 (6, 'sdsdsd', '2021-06-02 20:01:36'),
 (7, 'test02', '2021-06-02 20:01:42'),
 (8, 'tomat', '2021-06-02 21:38:54');
@@ -133,68 +133,29 @@ INSERT INTO `ingredient` (`id_ing`, `name_ing`, `create_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `menu`
+-- Table structure for table `menu`
 --
 
 CREATE TABLE `menu` (
   `id_menu` int(11) NOT NULL,
   `menu_name` varchar(255) NOT NULL,
-  `menu_price` float NOT NULL DEFAULT '0',
+  `menu_price` float NOT NULL DEFAULT 0,
   `ingredients` varchar(2550) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `menu`
+-- Dumping data for table `menu`
 --
 
 INSERT INTO `menu` (`id_menu`, `menu_name`, `menu_price`, `ingredients`, `create_at`) VALUES
-(1, 'test', 120, '545454,sdsdsd,test02,', '2021-06-02 21:33:48'),
-(2, 'test 2 ', 675, 'test - test - test02 - ', '2021-06-02 21:35:54'),
-(3, 'tacos', 35, '545454 - test - tomat - ', '2021-06-02 21:39:39');
+(3, 'tacos', 35, '545454 - test - tomat - ', '2021-06-02 21:39:39'),
+(4, 'qqqqq', 10, '545454 - test ', '2021-06-07 13:24:58');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order`
---
-
-CREATE TABLE `order` (
-  `id_order` int(11) NOT NULL,
-  `id_client` int(255) NOT NULL,
-  `full_name` varchar(255) NOT NULL,
-  `tele` varchar(255) NOT NULL,
-  `class` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `remarque` varchar(320) NOT NULL,
-  `remise` int(255) NOT NULL,
-  `order_menus` varchar(255) NOT NULL,
-  `price_total` float NOT NULL,
-  `price_remise` float NOT NULL,
-  `price_final` float NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `order`
---
-
-INSERT INTO `order` (`id_order`, `id_client`, `full_name`, `tele`, `class`, `status`, `remarque`, `remise`, `order_menus`, `price_total`, `price_remise`, `price_final`, `create_at`) VALUES
-(1, 0, '<br />\r\n<b>Notice</b>:  Undefined variable: full_name in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>92</b><br />\r\n', '<br />\r\n<b>Notice</b>:  Undefined variable: tele in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>93</b><br />\r\n', '<br />\r\n<b>Notice</b>:  Undefined variable: class in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>94</b><br />\r\n', 'Pending', 'tacos add without fries', 100, '', 0, 0, 0, '2021-06-11 15:16:56'),
-(2, 0, '<br />\r\n<b>Notice</b>:  Undefined variable: full_name in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>84</b><br />\r\n', '<br />\r\n<b>Notice</b>:  Undefined variable: tele in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>85</b><br />\r\n', '<br />\r\n<b>Notice</b>:  Undefined variable: class in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>86</b><br />\r\n', 'Pending', '50', 0, '', 0, 0, 0, '2021-06-11 15:24:03'),
-(3, 0, '<br />\r\n<b>Notice</b>:  Undefined variable: full_name in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>84</b><br />\r\n', '<br />\r\n<b>Notice</b>:  Undefined variable: tele in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>85</b><br />\r\n', '<br />\r\n<b>Notice</b>:  Undefined variable: class in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>86</b><br />\r\n', 'Pending', '25', 0, '', 0, 0, 0, '2021-06-11 15:28:56'),
-(4, 0, 'btissamyaqine', '879865983', '<br />\r\n<b>Notice</b>:  Undefined variable: class in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>86</b><br />\r\n', 'Pending', '50', 0, '', 0, 0, 0, '2021-06-11 15:30:53'),
-(5, 0, 'btissam', '6541254', '<br />\r\n<b>Notice</b>:  Undefined variable: class in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>86</b><br />\r\n', 'Pending', 'tacos add without fries', 25, '', 0, 0, 0, '2021-06-11 15:32:00'),
-(6, 0, 'HSDJHG', '86975974', '<br />\r\n<b>Notice</b>:  Undefined variable: class in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>86</b><br />\r\n', 'Pending', 'add tacos', 25, '', 0, 0, 0, '2021-06-11 15:36:53'),
-(7, 0, 'btissam', '6541254', '<br />\r\n<b>Notice</b>:  Undefined variable: class in <b>C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php</b> on line <b>86</b><br />\r\n', 'Pending', 'remar', 25, '', 0, 0, 0, '2021-06-15 14:23:53'),
-(8, 0, 'hahahhas', '2147483647', '&lt;br /&gt;\r\n&lt;b&gt;Notice&lt;/b&gt;:  Undefined variable: class in &lt;b&gt;C:\\xampp8\\htdocs\\Noa\\admin\\order_add_s2.php&lt;/b&gt; on line &lt;b&gt;82&lt;/b&gt;&lt;br /&gt;\r\n', 'Pending', 'test with sauce', 25, 'tacos - 35Dhs - Qte:2,test - 120Dhs - Qte:3,', 430, 107.5, 322.5, '2021-06-15 14:40:36'),
-(9, 10, 'btissam', '6541254', '/', 'Pending', 'kharayaaaaaaa', 50, 'tacos - 35Dhs - Qte:2,test - 120Dhs - Qte:1,test - 675Dhs - Qte:1,', 865, 432.5, 432.5, '2021-06-15 14:55:06'),
-(10, 10, 'btissam', '6541254', '/', 'Pending', '', 0, 'tacos - 35Dhs - Qte:1,', 35, 0, 35, '2021-06-15 15:03:09');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -204,91 +165,86 @@ CREATE TABLE `user` (
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
-  `create_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `active` tinyint(1) NOT NULL DEFAULT 0,
+  `create_on` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `login`, `password`, `fname`, `lname`, `role`, `active`, `create_on`) VALUES
 (1, 'test', 'test', 'btissam', 'yaqine', 'admin', 0, '2021-05-25 12:41:29');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `client`
+-- Indexes for table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id_client`);
 
 --
--- Index pour la table `credit`
+-- Indexes for table `credit`
 --
 ALTER TABLE `credit`
   ADD PRIMARY KEY (`id_credit`);
 
 --
--- Index pour la table `ingredient`
+-- Indexes for table `ingredient`
 --
 ALTER TABLE `ingredient`
   ADD PRIMARY KEY (`id_ing`);
 
 --
--- Index pour la table `menu`
+-- Indexes for table `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id_menu`);
 
 --
--- Index pour la table `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`id_order`);
-
---
--- Index pour la table `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `client`
+-- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
--- AUTO_INCREMENT pour la table `credit`
+-- AUTO_INCREMENT for table `credit`
 --
 ALTER TABLE `credit`
   MODIFY `id_credit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
--- AUTO_INCREMENT pour la table `ingredient`
+-- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `id_ing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_ing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
--- AUTO_INCREMENT pour la table `menu`
+-- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT pour la table `order`
---
-ALTER TABLE `order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT pour la table `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
