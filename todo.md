@@ -38,13 +38,13 @@
 - [ ] Menu Delete
 
 ## Order Management
-- [ ] New Order
+- [x] New Order
   - Client (Full name + Class/Group + Tele) + Menu (Name, Price, Qte) + remise (0%, 25%, 50%, 100%) + remarque + Create_at + Status (Pending -> Delivered -> Canceled -> Archived) + Unique ID + Daily ID
 
-- [ ] Order List
+- [x] Order List
   - All Orders
 
-- [ ] Order Detail
+- [x] Order Detail
   -> like facture (client + Menus + remise + remarque + status + IDs) -> Client Detail + Menu Details
 
 - [ ] Order Update

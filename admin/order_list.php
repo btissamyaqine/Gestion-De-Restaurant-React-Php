@@ -27,35 +27,30 @@ include("../config/connection.php");
 				<table id="table_id" class="display">
 					<thead>
 						<tr>
-							<th>Full Name</th>
-              <th>Tele</th>
-							<th>Class/Group</th>
-              <th>Remarque</th>
-              <th>Remise</th>
-              <th>Order_menu</th>
-              <th>Price</th>
-              
+							<th>ID</th>
+							<th>Daily ID</th>
+							<th>Client Name</th>
+              <th>Final Price</th>
+              <th>Date</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-$q1 = "SELECT * FROM `order` "; //q1 = query1
+$q1 = "SELECT * FROM `orders` "; //q1 = query1
 $q1 = $db->query($q1);
 $q1->execute();
 $c1 = $q1->rowCount(); //c1 = count1
 $r1 = $q1->fetchAll(PDO::FETCH_ASSOC); // r1 = row1
 $i = 0;
 while($i < $c1){
-
+	$UI_date = date("d M Y", strtotime($r1[$i]["create_at"]));
   echo "
   <tr>
+    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>#".$r1[$i]["id_order"]."</a></center></td>
+    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>#".$r1[$i]["id_day"]."</a></center></td>
     <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$r1[$i]["full_name"]."</a></center></td>
-    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$r1[$i]["tele"]."</a></center></td>
-    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$r1[$i]["class"]."</a></center></td>
-    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$r1[$i]["remarque"]."</a></center></td>
-    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$r1[$i]["remise"]."</a></center></td>
-    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$r1[$i]["order_menus"]."</a></center></td>
-    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$r1[$i]["price_final"]."</a></center></td>
+    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$r1[$i]["price_final"]." Dhs</a></center></td>
+    <td><center><a href='order_details.php?id=".$r1[$i]["id_order"]."'>".$UI_date."</a></center></td>
 
     
   </tr>

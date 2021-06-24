@@ -5,7 +5,6 @@ include("../config/connection.php");
 
 <?php
 	if(isset($_POST['append']) && isset($_POST["menu"])){
-		// print_r($_POST);
 		isset($_POST["id_client"]) ? $id_client = htmlspecialchars($_POST["id_client"]) : "";
 		isset($_POST["full_name"]) ? $full_name = htmlspecialchars($_POST["full_name"]) : "";
 		isset($_POST["tele"]) ? $tele = htmlspecialchars($_POST["tele"]) : "";
@@ -22,22 +21,48 @@ include("../config/connection.php");
 		foreach( $menus as $i => $menu ) {
 			if(!is_numeric($qtes[$i])) $qtes[$i] = 1;
 
-			$order_menus .= $menu." - ".$prices[$i]."Dhs - Qte:".$qtes[$i].",";
+			$order_menus .= $menu." - ".$prices[$i]."Dhs - Qte:".$qtes[$i]."\r\n";
 			$price_total += ($prices[$i] * $qtes[$i]);
 		}
 		$price_remise = $remise * $price_total / 100;
 		$price_final = $price_total - $price_remise;
 
-echo "ID Client",$_POST["id_client"];
+	// Start Generate Id Day ##############################################################
+		// Get Unix timestamp Days since (January 1 1970 00:00:00 GMT).
+		$x = time();
+		$timestamp_day = intval($x/86400);
 
-	$query =	'INSERT INTO `order`(`id_client`, `full_name`, `tele`, `class`, `status`, `remarque`, `remise`, `order_menus`, `price_total`,
-						`price_remise`, `price_final`) 
-						VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+		// Get the last record to get `id_day` and `timestamp_day`
+		$query = 'SELECT * FROM `orders` ORDER BY `id_order` DESC LIMIT 1';
+		$query = $db->prepare($query);
+		$query->execute();
+		$count = $query->rowCount();
+		$la_case = $query->fetchAll(\PDO::FETCH_ASSOC);
+		if ($count > 0) {
+			$timestamp_day_db=$la_case[0]['timestamp_day'];
+			$id_day_db=$la_case[0]['id_day'];
+		} else {
+			$timestamp_day_db = $timestamp_day;
+			$id_day_db = 0;
+		}
+
+		if ($timestamp_day == $timestamp_day_db) {
+			$id_day = $id_day_db + 1;
+		} else {
+			$id_day = 1;
+		}
+		
+	// End Generate Id Day ##############################################################
+
+
+	$query =	'INSERT INTO `orders`(`id_client`, `full_name`, `tele`, `class`, `status`, `remarque`, `remise`, `order_menus`, `price_total`,
+						`price_remise`, `price_final`,`timestamp_day`,`id_day`) 
+						VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)';
 		$query = $db->prepare($query);
 
 		// print_r([$id_client, $full_name, $tele, $class, $status, $remarque, $remise, $order_menus, $price_total, $price_remise, $price_final]);
 
-		if ($query->execute([$id_client, $full_name, $tele, $class, $status, $remarque, $remise, $order_menus, $price_total, $price_remise, $price_final])) {
+		if ($query->execute([$id_client, $full_name, $tele, $class, $status, $remarque, $remise, $order_menus, $price_total, $price_remise, $price_final, $timestamp_day, $id_day])) {
 			echo "
 				<script>
 					const msg = 'Done.';
