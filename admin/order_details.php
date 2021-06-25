@@ -2,7 +2,6 @@
 include_once '../config/connection.php';
 
 
-
 if(isset($_POST['append'])){
 
 	isset($_POST["id_client"]) ? $id_client = htmlspecialchars($_POST["id_client"]) : "";
@@ -81,10 +80,11 @@ $result = $db->query($sql);
          </section>");}
         
          ?>
-          <!-- <ul class="actions">
-            <li><a href="order_update.php?id=<?= $_GET['id'] ?>" type="submit" name="update" value="Update" class="button primary">Update</a></li>
-            <li><a href="order_delete.php?id=<?= $_GET['id']?>" type="reset" onclick="return myConfirm();" name="delete" value="delete" class="button">Delete</a></li>
-          </ul> -->
+          <ul class="actions">
+            <li><a href="order_update_status.php?id=<?= $_GET['id'] ?>" type="submit" name="update" value="Update" class="green primary">Update Status</a></li>
+            <!-- <li><a href="order_update.php?id=<?= $_GET['id'] ?>" type="submit" name="update" value="Update" class="button">Update</a></li> -->
+            <li><a href="order_delete.php?id=<?= $_GET['id']?>" type="reset" onclick="return myConfirm();" name="delete" value="delete" class="button primary">Delete</a></li>
+          </ul>
 	
 <script>
 function myConfirm() {

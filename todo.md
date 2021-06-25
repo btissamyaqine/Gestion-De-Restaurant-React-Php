@@ -4,14 +4,14 @@
 - [x] Container (Body)
 - [x] Sidebar (Menu + Footer)
 - [x] DataTables
-- [ ] msg errors
+- [ ] error msg mgt
 
 ## Login
 - [x] Sign In
 - [x] Sign Out
 
 ## Client Management
-- [x] New client
+- [x] New New client
 - [x] list client
 - [x] Detail client
 - [x] Update client
@@ -20,7 +20,7 @@
   - [ ] Tele: not show 0
 
 ## Credit Management
-- [x] Add done
+- [x] Add New Credit
 - [x] List
 - [x] Delete
 - [x] Update
@@ -48,14 +48,15 @@
   -> like facture (client + Menus + remise + remarque + status + IDs) -> Client Detail + Menu Details
 
 - [ ] Order Update
-  - Change Status 
-    - status ->  -> done ->
-    - Ordered -> Pending -> Delivered
-    - Canceled
-    - Archived
+- [x] Order Delete
+- [x] Change Status : Pending -> Delivered -> Canceled -> Archived
 
 
-
+## Accounting Management
+- [x] Accounting Management: 
+  - [x] Count number of orders
+  - [x] Count profit
+  - [x] Calcul between customize periods
 
 
 
@@ -66,5 +67,5 @@
   - order
 
 ## Devis
-- [ ] Create a devis
+- [x] Create a devis
 

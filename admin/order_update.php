@@ -41,7 +41,7 @@ if(isset($_POST['update'])){
 ?>	
 
  <?php
-$sql = 'SELECT * FROM `order`';
+$sql = 'SELECT * FROM `orders`';
 $result = $db->query($sql);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 ?>

@@ -4,7 +4,7 @@
 <?php
 		if(isset($_GET['id'])) {
 			$id_order = $_GET['id'];
-			$sql = 'DELETE FROM `order` WHERE `id_order` = "'.$id_order.'"';
+			$sql = 'DELETE FROM `orders` WHERE `id_order` = "'.$id_order.'"';
 			$sql = $db->prepare($sql);
 			if ($sql->execute()) {
 				echo "

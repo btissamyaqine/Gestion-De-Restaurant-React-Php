@@ -24,6 +24,7 @@
 										<li><a href="credit_list.php">Credits</a></li>
 										<li><a href="ingredient_list.php">Ingredients</a></li>
 										<li><a href="menu_list.php">Menu</a></li>
+										<li><a href="accounting_list.php">Accounting</a></li>
 										<li><a href="../signout.php">Sign Out</a></li>
 
 									</ul>
