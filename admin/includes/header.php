@@ -30,7 +30,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="./home.php" class="logo"><strong>Noa App</strong></a>
+									<a href="./client_list.php" class="logo"><strong>Noa App</strong></a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>

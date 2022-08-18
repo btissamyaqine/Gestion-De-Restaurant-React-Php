@@ -12,5 +12,6 @@
     // $DB_HOST = 'localhost:3306';
 
     $host = $_SERVER['HTTP_HOST'];
-    $protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http';
+    $protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 
+    'https' : 'http';
     $url = "$protocol://$host/noa_app";
