@@ -33,7 +33,7 @@ if(isset($_POST["signin"])) {
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>NoaApp</title>
+		<title>happygilmore</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -42,8 +42,8 @@ if(isset($_POST["signin"])) {
 
 		<!-- Header -->
 			<header id="header">
-				<h1>NoaApp</h1>
-				<p>Welcome to NoaApp restaurant.</p>
+				<h1>Happy Gilmore</h1>
+				<p>Welcome to Happy Gilmore Restaurant.</p>
 				
 			</header>
 			<p style="color:red;"><?php

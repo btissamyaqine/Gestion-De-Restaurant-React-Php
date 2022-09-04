@@ -6,7 +6,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title></title>
+		<title>Happy Gilmore</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -31,7 +31,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="./client_list.php" class="logo"><strong>Noa App</strong></a>
+									<a href="./client_list.php" class="logo"><strong>@happygilmore</strong></a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
